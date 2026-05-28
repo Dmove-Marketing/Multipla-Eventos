@@ -24,7 +24,7 @@
   "deploy": {
     "user": "root",
     "server": "157.173.197.116",
-    "remote_path": "/var/www/assesoria.multiplaeventos.com.br"
+    "remote_path": "/var/www/eventos.multiplaeventos.com.br"
   },
   "meta": {
     "created_at": "YYYY-MM-DD",
