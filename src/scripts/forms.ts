@@ -20,10 +20,11 @@ export function initForms() {
     (form as any).__formsInitialized = true;
 
     let started = false;
-    const formId  = form.dataset.formId!;
-    const project = form.dataset.project || window.location.hostname;
+    const formId   = form.dataset.formId!;
+    const formName = form.dataset.formName ?? formId;
+    const project  = form.dataset.project || window.location.hostname;
 
-    form.querySelectorAll<HTMLInputElement>('[name="telefone"]').forEach(applyPhoneMask);
+    form.querySelectorAll<HTMLInputElement>('[name*="telefone"], [data-mask="phone"]').forEach(applyPhoneMask);
 
     const submitUrl   = form.dataset.submitUrl;
     const redirectUrl = form.dataset.redirect;
@@ -100,9 +101,16 @@ export function initForms() {
 
       if (msgEl) msgEl.style.display = 'none';
 
-      const formData = new FormData(form);
-      const rawData: Record<string, string> = {};
-      formData.forEach((v, k) => { if (k !== 'website') rawData[k] = v.toString(); });
+      // Coleta campos usando data-key como chave do payload (fallback: nome capitalizado)
+      const namedFields: Record<string, string> = {};
+      form.querySelectorAll<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>(
+        'input:not([name="website"]):not([type="hidden"]), select, textarea'
+      ).forEach((el) => {
+        if (!el.name || !el.value) return;
+        const key = (el as HTMLElement).dataset.key
+          ?? (el.name.charAt(0).toUpperCase() + el.name.slice(1));
+        namedFields[key] = el.value;
+      });
 
       const trackingRaw = sessionStorage.getItem('dmove_tracking');
       const tracking: Record<string, string> = trackingRaw ? JSON.parse(trackingRaw) : {};
@@ -110,14 +118,6 @@ export function initForms() {
       const now = new Date();
       const dateStr = now.toLocaleDateString('pt-BR');
       const timeStr = now.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
-
-      const capitalizedFields: Record<string, string> = {};
-      let fonteBase = rawData['fonte'] || project;
-      Object.entries(rawData).forEach(([key, val]) => {
-        if (key === 'fonte') return;
-        const capKey = key.charAt(0).toUpperCase() + key.slice(1);
-        capitalizedFields[capKey] = val;
-      });
 
       const trackingParamKeys = [
         'utm_source', 'utm_medium', 'utm_campaign', 'utm_term',
@@ -127,7 +127,10 @@ export function initForms() {
       ];
       const qs = new URLSearchParams();
       trackingParamKeys.forEach(k => { if (tracking[k]) qs.set(k, tracking[k]); });
-      const fonte = qs.toString() ? `${fonteBase}?${qs.toString()}` : fonteBase;
+      const qsStr = qs.toString();
+      const fonte = qsStr
+        ? `Landing page ${window.location.pathname}?${qsStr}`
+        : `Landing page ${window.location.pathname}`;
 
       // Campos Meta CAPI — enviados também como campos flat para uso direto no n8n
       const metaCapi: Record<string, string> = {};
@@ -137,16 +140,16 @@ export function initForms() {
       if (tracking['event_id'])    metaCapi['event_id']    = tracking['event_id'];
 
       const payload: Record<string, string> = {
-        ...capitalizedFields,
+        ...namedFields,
         Fonte: fonte,
-        Data: dateStr,
-        'Horário': timeStr,
-        'URL da página': window.location.href,
-        'Agente de usuário': navigator.userAgent,
-        'IP remoto': '',
-        'Desenvolvido por': 'Dmove',
+        Date: dateStr,
+        Time: timeStr,
+        'Page URL': window.location.href,
+        'User Agent': navigator.userAgent,
+        'Remote IP': '',
+        'Powered by': 'Dmove',
         form_id: formId,
-        form_name: formId,
+        form_name: formName,
         ...metaCapi,
       };
 
@@ -162,7 +165,7 @@ export function initForms() {
         let json: any = {};
         try { json = await res.json(); } catch {}
 
-        (window as any).dataLayer?.push({ event: 'form_submit', form_id: formId, project, ...capitalizedFields });
+        (window as any).dataLayer?.push({ event: 'form_submit', form_id: formId, project, ...namedFields });
 
         const redir = redirectUrl || json.redirect;
         if (redir) {

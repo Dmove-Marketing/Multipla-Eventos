@@ -10,6 +10,7 @@ interface Field {
   name: string;
   type: 'text' | 'email' | 'tel' | 'number' | 'select' | 'textarea' | 'hidden';
   label?: string;
+  payloadKey?: string;
   placeholder?: string;
   required?: boolean;
   full?: boolean;
@@ -35,6 +36,7 @@ type AnyField = Field | FieldRow;
 
 interface Props {
   formId: string;
+  formName?: string;
   project: string;
   submitUrl?: string;
   redirectUrl?: string;
@@ -51,6 +53,7 @@ interface Props {
 
 const {
   formId,
+  formName,
   project,
   submitUrl,
   redirectUrl,
@@ -101,6 +104,7 @@ const groupCls  = (full?: boolean) => {
   name={formId}
   class:list={[!prefix && 'lead-form', className]}
   data-form-id={formId}
+  data-form-name={formName}
   data-project={project}
   data-submit-url={submitUrl}
   data-redirect={redirectUrl}
@@ -125,13 +129,13 @@ const groupCls  = (full?: boolean) => {
               <div class={groupCls(f.full)}>
                 {f.label && <label class={cxLabel} for={f.id ?? f.name}>{f.label}</label>}
                 {f.type === 'select' ? (
-                  <select class={cxSelect} name={f.name} id={f.id ?? f.name} required={f.required}>
+                  <select class={cxSelect} name={f.name} id={f.id ?? f.name} required={f.required} data-key={f.payloadKey}>
                     {f.options?.map((opt) => (
                       <option value={opt.value} disabled={opt.disabled} selected={opt.selected}>{opt.label}</option>
                     ))}
                   </select>
                 ) : f.type === 'textarea' ? (
-                  <textarea class={cxArea} name={f.name} id={f.id ?? f.name} rows={f.rows ?? 4} placeholder={f.placeholder} required={f.required}></textarea>
+                  <textarea class={cxArea} name={f.name} id={f.id ?? f.name} rows={f.rows ?? 4} placeholder={f.placeholder} required={f.required} data-key={f.payloadKey}></textarea>
                 ) : f.type === 'hidden' ? (
                   <input type="hidden" name={f.name} id={f.id ?? f.name} value={f.value} />
                 ) : (
@@ -147,6 +151,7 @@ const groupCls  = (full?: boolean) => {
                     min={f.min}
                     max={f.max}
                     readonly={f.readonly}
+                    data-key={f.payloadKey}
                   />
                 )}
                 {f.errorText && <span class={cxError} id={f.errorId}>{f.errorText}</span>}
@@ -166,13 +171,13 @@ const groupCls  = (full?: boolean) => {
         <div class={groupCls(f.full)}>
           {f.label && <label class={cxLabel} for={f.id ?? f.name}>{f.label}</label>}
           {f.type === 'select' ? (
-            <select class={cxSelect} name={f.name} id={f.id ?? f.name} required={f.required}>
+            <select class={cxSelect} name={f.name} id={f.id ?? f.name} required={f.required} data-key={f.payloadKey}>
               {f.options?.map((opt) => (
                 <option value={opt.value} disabled={opt.disabled} selected={opt.selected}>{opt.label}</option>
               ))}
             </select>
           ) : f.type === 'textarea' ? (
-            <textarea class={cxArea} name={f.name} id={f.id ?? f.name} rows={f.rows ?? 4} placeholder={f.placeholder} required={f.required}></textarea>
+            <textarea class={cxArea} name={f.name} id={f.id ?? f.name} rows={f.rows ?? 4} placeholder={f.placeholder} required={f.required} data-key={f.payloadKey}></textarea>
           ) : (
             <input
               class={cxInput}
@@ -186,6 +191,7 @@ const groupCls  = (full?: boolean) => {
               min={f.min}
               max={f.max}
               readonly={f.readonly}
+              data-key={f.payloadKey}
             />
           )}
           {f.errorText && <span class={cxError} id={f.errorId}>{f.errorText}</span>}

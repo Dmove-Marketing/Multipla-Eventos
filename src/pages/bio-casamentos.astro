@@ -64,31 +64,32 @@ import '../styles/bio-casamentos.css';
 				<div class="elementor-element elementor-element-6bc68ec elementor-button-align-stretch elementor-widget elementor-widget-form" data-id="6bc68ec" data-element_type="widget" data-e-type="widget" data-settings="{&quot;step_next_label&quot;:&quot;Pr\u00f3ximo&quot;,&quot;step_previous_label&quot;:&quot;Anterior&quot;,&quot;step_type&quot;:&quot;number_text&quot;,&quot;step_icon_shape&quot;:&quot;circle&quot;}" data-widget_type="form.default">
 							<LeadForm
 							  formId="lead-form"
+							  formName="form_bio_casamentos"
 							  project={config.project_slug}
 							  submitUrl={config.forms['lead-form'].webhooks[0]}
 							  redirectUrl={config.forms['lead-form'].redirect_on_success}
 							  submitText="Solicitar orçamento"
 							  honeypot
 							  fields={[
-							    { name: 'form_fields[servico]', type: 'select', placeholder: '', required: true, options: [
+							    { name: 'form_fields[servico]', payloadKey: 'Serviço', type: 'select', placeholder: '', required: true, options: [
 							      { value: '', label: 'Objetivo de Contato' },
 							      { value: 'Solicitar Orçamento', label: 'Solicitar Orçamento' },
 							      { value: 'Fornecedor', label: 'Fornecedor' },
 							      { value: 'Profissional buscando vaga', label: 'Profissional buscando vaga' }
 							    ] },
-							    { name: 'form_fields[nome]', type: 'text', placeholder: 'Nome completo', required: true },
-							    { name: 'form_fields[telefone]', type: 'text', placeholder: 'WhatsApp', required: true },
-							    { name: 'form_fields[email]', type: 'text', placeholder: 'E-mail', required: true },
-							    { name: 'form_fields[tipo]', type: 'select', placeholder: '', required: true, options: [
+							    { name: 'form_fields[nome]', payloadKey: 'Nome', type: 'text', placeholder: 'Nome completo', required: true },
+							    { name: 'form_fields[telefone]', payloadKey: 'WhatsApp', type: 'text', placeholder: 'WhatsApp', required: true },
+							    { name: 'form_fields[email]', payloadKey: 'E-mail', type: 'text', placeholder: 'E-mail', required: true },
+							    { name: 'form_fields[tipo]', payloadKey: 'Tipo de evento', type: 'select', placeholder: '', required: true, options: [
 							      { value: '', label: 'Tipo de evento' },
 							      { value: 'Bodas', label: 'Bodas' },
 							      { value: 'Casamento', label: 'Casamento' },
 							      { value: 'Outros', label: 'Outros' }
 							    ] },
-							    { name: 'form_fields[data]', type: 'text', placeholder: 'Data do evento', required: true },
-							    { name: 'form_fields[local_evento]', type: 'text', placeholder: 'Local do evento', required: true },
-							    { name: 'form_fields[convidados]', type: 'number', placeholder: 'Quantidade de pessoas', required: true },
-							    { name: 'form_fields[mensagem]', type: 'textarea', placeholder: 'Informações adicionais (não obrigatório)', required: false }
+							    { name: 'form_fields[data]', payloadKey: 'Data do evento', type: 'text', placeholder: 'Data do evento', required: true },
+							    { name: 'form_fields[local_evento]', payloadKey: 'Local do evento', type: 'text', placeholder: 'Local do evento', required: true },
+							    { name: 'form_fields[convidados]', payloadKey: 'Convidados', type: 'number', placeholder: 'Quantidade de pessoas', required: true },
+							    { name: 'form_fields[mensagem]', payloadKey: 'Mensagem', type: 'textarea', placeholder: 'Informações adicionais (não obrigatório)', required: false }
 							  ]}
 							/>
 						</div>
