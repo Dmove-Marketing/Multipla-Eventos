@@ -1,0 +1,55 @@
+---
+// Header.astro
+---
+
+<header class="header">
+  <div class="container header-container">
+    <div class="logo-wrapper">
+      <!-- IMG: header-logo -->
+      <img src="/images/logo.png" alt="Múltipla Eventos" class="logo" data-placeholder="header-logo" />
+    </div>
+  </div>
+</header>
+
+<style>
+  .header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+    padding: var(--space-2xl) 0;
+  }
+
+  .header-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .logo-wrapper {
+    max-width: 200px;
+    transition: transform var(--transition-normal);
+  }
+
+  .logo-wrapper:hover {
+    transform: scale(1.02);
+  }
+
+  .logo {
+    width: 100%;
+    height: auto;
+    display: block;
+    /* Adicionamos uma sombra de texto ou brilho sutil para contraste se necessário */
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5));
+  }
+
+  @media (max-width: 768px) {
+    .header {
+      padding: var(--space-xl) 0;
+    }
+    .logo-wrapper {
+      max-width: 140px;
+    }
+  }
+</style>

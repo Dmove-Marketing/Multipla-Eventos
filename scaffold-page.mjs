@@ -136,7 +136,14 @@ function replaceImages(html) {
     const isPriority = imgCount === 0;
     imgCount++;
 
-    let props = `src="/images/placeholder.jpg" alt="${alt}"`;
+    const srcAttr = (attrs.match(/\bsrc=["']([^"']*)["']/) || [])[1] || '';
+    let fileName = 'placeholder.jpg';
+    if (srcAttr) {
+      const parts = srcAttr.split('/');
+      fileName = parts[parts.length - 1].split('?')[0];
+    }
+
+    let props = `src="${fileName}" alt="${alt}"`;
     if (widthStr) props += ` width={${widthStr}}`;
     if (heightStr) props += ` height={${heightStr}}`;
     if (cls) props += ` class="${cls}"`;
@@ -342,7 +349,20 @@ if (!fs.existsSync(sourceDir)) {
   process.exit(1);
 }
 
-const files = fs.readdirSync(sourceDir).filter(f => f.endsWith('.html'));
+const argFile = process.argv[2];
+let files = fs.readdirSync(sourceDir).filter(f => f.endsWith('.html'));
+if (argFile) {
+  const checkName = argFile.endsWith('.html') ? argFile : `${argFile}.html`;
+  if (fs.existsSync(path.join(sourceDir, checkName))) {
+    files = [checkName];
+  } else if (fs.existsSync(argFile)) {
+    files = [path.basename(argFile)];
+  } else {
+    console.error(`\n❌ Erro: Arquivo especificado "${argFile}" não encontrado em "${sourceDir}".\n`);
+    process.exit(1);
+  }
+}
+
 if (!files.length) {
   console.log(`\n⚠️ Nenhum .html encontrado em "${sourceDir}".\n`);
   process.exit(0);

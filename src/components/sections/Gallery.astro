@@ -1,0 +1,412 @@
+---
+// Gallery.astro
+const photos = [
+  { id: 1, key: "galeria-foto-1", src: "/images/galeria-1.jpg" },
+  { id: 2, key: "galeria-foto-2", src: "/images/galeria-2.jpg" },
+  { id: 3, key: "galeria-foto-3", src: "/images/galeria-3.jpg" },
+  { id: 4, key: "galeria-foto-4", src: "/images/galeria-4.jpg" },
+  { id: 5, key: "galeria-foto-5", src: "/images/galeria-5.jpg" },
+  { id: 6, key: "galeria-foto-6", src: "/images/galeria-6.jpg" },
+  { id: 7, key: "galeria-foto-7", src: "/images/galeria-7.jpg" },
+  { id: 8, key: "galeria-foto-8", src: "/images/galeria-8.jpg" },
+  { id: 9, key: "galeria-foto-9", src: "/images/galeria-9.jpg" },
+  { id: 10, key: "galeria-foto-10", src: "/images/galeria-10.jpg" },
+  { id: 11, key: "galeria-foto-11", src: "/images/galeria-11.jpg" },
+  { id: 12, key: "galeria-foto-12", src: "/images/galeria-12.jpg" },
+  { id: 13, key: "galeria-foto-13", src: "/images/galeria-13.jpg" },
+  { id: 14, key: "galeria-foto-14", src: "/images/galeria-14.jpg" },
+  { id: 15, key: "galeria-foto-15", src: "/images/galeria-15.jpg" },
+  { id: 16, key: "galeria-foto-16", src: "/images/galeria-16.jpg" }
+];
+---
+
+<section class="gallery-section bg-rose-gold-section">
+  <div class="container gallery-container">
+    <div class="gallery-header">
+      <h2 class="gallery-title">
+        A celebração mais marcante de sua vida nas mãos da assessoria mais premiada de São Paulo.
+      </h2>
+      <p class="gallery-subtitle">
+        Conheça os casais que escolheram a maior assessoria de eventos de São Paulo.
+      </p>
+    </div>
+
+    <!-- Grade de Imagens (16 Itens) -->
+    <div class="gallery-grid">
+      {photos.map((photo) => (
+        <button class="gallery-item-btn" data-src={photo.src} data-index={photo.id - 1} aria-label={`Ver foto de casamento ${photo.id}`}>
+          <div class="gallery-image-wrapper">
+            <!-- IMG: {photo.key} -->
+            <img 
+              src={photo.src} 
+              alt={`Casamento real Múltipla Eventos ${photo.id}`} 
+              class="gallery-img" 
+              loading="lazy"
+              data-placeholder={photo.key}
+            />
+            <div class="gallery-overlay">
+              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                <line x1="11" y1="8" x2="11" y2="14"></line>
+                <line x1="8" y1="11" x2="14" y2="11"></line>
+              </svg>
+            </div>
+          </div>
+        </button>
+      ))}
+    </div>
+  </div>
+
+  <!-- Modal Lightbox (Fundo Escuro) -->
+  <div id="gallery-lightbox" class="lightbox-overlay" aria-hidden="true" role="dialog">
+    <button id="lightbox-close" class="lightbox-control-btn lightbox-close-btn" aria-label="Fechar visualização">
+      <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="18" y1="6" x2="6" y2="18"></line>
+        <line x1="6" y1="6" x2="18" y2="18"></line>
+      </svg>
+    </button>
+
+    <button id="lightbox-prev" class="lightbox-control-btn lightbox-prev-btn" aria-label="Foto anterior">
+      <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="15 18 9 12 15 6"></polyline>
+      </svg>
+    </button>
+
+    <div class="lightbox-content">
+      <img id="lightbox-img" src="" alt="Casamento Múltipla Eventos" class="lightbox-img" />
+    </div>
+
+    <button id="lightbox-next" class="lightbox-control-btn lightbox-next-btn" aria-label="Próxima foto">
+      <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="9 18 15 12 9 6"></polyline>
+      </svg>
+    </button>
+
+    <div class="lightbox-counter"><span id="lightbox-current-idx">1</span> / 16</div>
+  </div>
+</section>
+
+<script is:inline>
+  document.addEventListener('DOMContentLoaded', () => {
+    const items = document.querySelectorAll('.gallery-item-btn');
+    const lightbox = document.getElementById('gallery-lightbox');
+    const lbImg = document.getElementById('lightbox-img');
+    const lbClose = document.getElementById('lightbox-close');
+    const lbPrev = document.getElementById('lightbox-prev');
+    const lbNext = document.getElementById('lightbox-next');
+    const lbCounter = document.getElementById('lightbox-current-idx');
+    
+    let currentIndex = 0;
+    const photoSources = Array.from(items).map(item => item.dataset.src);
+
+    const openLightbox = (index) => {
+      currentIndex = index;
+      lbImg.src = photoSources[currentIndex];
+      lbCounter.textContent = currentIndex + 1;
+      
+      lightbox.classList.add('active');
+      lightbox.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    };
+
+    const closeLightbox = () => {
+      lightbox.classList.remove('active');
+      lightbox.setAttribute('aria-hidden', 'true');
+      document.body.style.removeProperty('overflow');
+      lbImg.src = '';
+    };
+
+    const nextImage = () => {
+      let nextIdx = currentIndex + 1;
+      if (nextIdx >= photoSources.length) nextIdx = 0;
+      openLightbox(nextIdx);
+    };
+
+    const prevImage = () => {
+      let prevIdx = currentIndex - 1;
+      if (prevIdx < 0) prevIdx = photoSources.length - 1;
+      openLightbox(prevIdx);
+    };
+
+    // Event listeners
+    items.forEach(item => {
+      item.addEventListener('click', () => {
+        const index = parseInt(item.dataset.index);
+        openLightbox(index);
+      });
+    });
+
+    lbClose.addEventListener('click', closeLightbox);
+    lbPrev.addEventListener('click', prevImage);
+    lbNext.addEventListener('click', nextImage);
+
+    // Fecha ao clicar fora da imagem
+    lightbox.addEventListener('click', (e) => {
+      if (e.target === lightbox || e.target.classList.contains('lightbox-content')) {
+        closeLightbox();
+      }
+    });
+
+    // Teclado
+    document.addEventListener('keydown', (e) => {
+      if (!lightbox.classList.contains('active')) return;
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowRight') nextImage();
+      if (e.key === 'ArrowLeft') prevImage();
+    });
+
+    // Mobile swipe
+    let startX = 0;
+    let endX = 0;
+    lightbox.addEventListener('touchstart', (e) => {
+      startX = e.touches[0].clientX;
+    }, { passive: true });
+
+    lightbox.addEventListener('touchend', (e) => {
+      endX = e.changedTouches[0].clientX;
+      const diff = startX - endX;
+      if (Math.abs(diff) > 50) {
+        if (diff > 0) {
+          nextImage();
+        } else {
+          prevImage();
+        }
+      }
+    }, { passive: true });
+  });
+</script>
+
+<style>
+  .gallery-section {
+    padding: var(--space-4xl) 0;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .gallery-container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3xl);
+  }
+
+  .gallery-header {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+  }
+
+  .gallery-title {
+    font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+    font-weight: 700;
+    line-height: 1.25;
+    letter-spacing: -0.01em;
+    color: white;
+  }
+
+  .gallery-subtitle {
+    font-size: clamp(0.95rem, 1.8vw, 1.1rem);
+    line-height: 1.6;
+    color: var(--text-secondary);
+  }
+
+  /* Grid Gallery */
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 4px; /* Grade unida e limpa */
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    background-color: var(--bg-rose-gold);
+  }
+
+  .gallery-item-btn {
+    border: none;
+    background: none;
+    padding: 0;
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+    outline: none;
+  }
+
+  .gallery-image-wrapper {
+    position: relative;
+    aspect-ratio: 3 / 2;
+    overflow: hidden;
+  }
+
+  .gallery-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    transition: transform var(--transition-normal);
+  }
+
+  .gallery-item-btn:hover .gallery-img {
+    transform: scale(1.05);
+  }
+
+  /* Overlay hover */
+  .gallery-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(185, 142, 117, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    opacity: 0;
+    transition: opacity var(--transition-fast);
+    z-index: 5;
+  }
+
+  .gallery-item-btn:hover .gallery-overlay {
+    opacity: 1;
+  }
+
+  /* Lightbox Overlay */
+  .lightbox-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(7, 4, 4, 0.95);
+    z-index: 2000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s var(--ease-out-expo);
+    backdrop-filter: blur(10px);
+  }
+
+  .lightbox-overlay.active {
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  .lightbox-content {
+    position: relative;
+    max-width: 90%;
+    max-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2005;
+  }
+
+  .lightbox-img {
+    max-width: 100%;
+    max-height: 80vh;
+    border-radius: var(--radius-sm);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
+    display: block;
+    object-fit: contain;
+    animation: zoomIn 0.3s var(--ease-out-quart);
+  }
+
+  @keyframes zoomIn {
+    from {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  /* Controles Lightbox */
+  .lightbox-control-btn {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.2s;
+    z-index: 2010;
+    backdrop-filter: blur(5px);
+  }
+
+  .lightbox-control-btn:hover {
+    background: rgba(255, 255, 255, 0.15);
+    transform: scale(1.05);
+  }
+
+  .lightbox-close-btn {
+    top: 24px;
+    right: 24px;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+  }
+
+  .lightbox-prev-btn {
+    left: 24px;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+  }
+
+  .lightbox-next-btn {
+    right: 24px;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+  }
+
+  .lightbox-counter {
+    position: absolute;
+    bottom: 24px;
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    font-weight: 600;
+    z-index: 2010;
+    letter-spacing: 0.05em;
+  }
+
+  @media (max-width: 992px) {
+    .gallery-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 576px) {
+    .gallery-grid {
+      grid-template-columns: 1fr;
+    }
+    .lightbox-prev-btn,
+    .lightbox-next-btn {
+      width: 44px;
+      height: 44px;
+    }
+    .lightbox-prev-btn { left: 10px; }
+    .lightbox-next-btn { right: 10px; }
+    .lightbox-close-btn {
+      top: 16px;
+      right: 16px;
+      width: 40px;
+      height: 40px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .gallery-section {
+      padding: var(--space-3xl) 0;
+    }
+  }
+</style>

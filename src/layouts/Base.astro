@@ -19,6 +19,7 @@ interface Props {
   noIndex?: boolean;
   theme?: 'dark' | 'light';
   jsonLd?: Record<string, any>;
+  bodyClass?: string;
 }
 
 const {
@@ -29,6 +30,7 @@ const {
   noIndex = false,
   theme = 'dark',
   jsonLd,
+  bodyClass = 'wp-singular page-template page-template-elementor_canvas page page-id-598 wp-embed-responsive wp-theme-hello-elementor hello-elementor-default elementor-default elementor-template-canvas elementor-kit-4 elementor-page elementor-page-598',
 } = Astro.props;
 
 import config from '../../config.json';
@@ -75,9 +77,14 @@ const defaultJsonLd = {
     <!-- JSON-LD Structured Data -->
     <script type="application/ld+json" set:html={JSON.stringify(jsonLd || defaultJsonLd)} />
 
+    <!-- Fontes Elegant Cursive & Serif para Casamentos -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Playfair+Display:ital,wght@1,400;1,600&display=swap" rel="stylesheet" />
+
     <slot name="head" />
   </head>
-  <body>
+  <body class={bodyClass}>
     <!-- GTM Body noscript -->
     {trackingEnabled && gtmId && <GTMBody gtmId={gtmId} />}
 

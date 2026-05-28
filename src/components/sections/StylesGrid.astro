@@ -1,0 +1,214 @@
+---
+// StylesGrid.astro
+const stylesList = [
+  {
+    title: "Destination Wedding",
+    placeholderKey: "estilo-destination-wedding",
+    imgSrc: "/images/estilo-destination.jpg"
+  },
+  {
+    title: "Praia",
+    placeholderKey: "estilo-praia",
+    imgSrc: "/images/estilo-praia.jpg"
+  },
+  {
+    title: "Igreja",
+    placeholderKey: "estilo-igreja",
+    imgSrc: "/images/estilo-igreja.jpg"
+  },
+  {
+    title: "City Halls",
+    placeholderKey: "estilo-city-halls",
+    imgSrc: "/images/estilo-city-halls.jpg"
+  },
+  {
+    title: "Castelos",
+    placeholderKey: "estilo-castelos",
+    imgSrc: "/images/estilo-castelos.jpg"
+  },
+  {
+    title: "Fazendas",
+    placeholderKey: "estilo-fazendas",
+    imgSrc: "/images/estilo-fazendas.jpg"
+  }
+];
+---
+
+<section class="styles-section bg-watermark">
+  <div class="container styles-container">
+    <div class="styles-header">
+      <h2 class="styles-title">Seu estilo. Nossa assinatura.</h2>
+      <p class="styles-subtitle">Realize seu casamento sem limites, onde sua imaginação quiser.</p>
+    </div>
+
+    <div class="styles-grid">
+      {stylesList.map((style) => (
+        <div class="style-card">
+          <div class="style-image-wrapper">
+            <!-- IMG: {style.placeholderKey} -->
+            <img 
+              src={style.imgSrc} 
+              alt={style.title} 
+              class="style-img" 
+              loading="lazy"
+              data-placeholder={style.placeholderKey}
+            />
+            <div class="style-card-overlay"></div>
+          </div>
+          <div class="style-content-overlay">
+            <h3 class="style-card-title">{style.title}</h3>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .styles-section {
+    padding: var(--space-4xl) 0;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .styles-container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3xl);
+  }
+
+  .styles-header {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+  }
+
+  .styles-title {
+    font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+    font-weight: 700;
+    line-height: 1.25;
+    letter-spacing: -0.01em;
+  }
+
+  .styles-subtitle {
+    font-size: clamp(0.95rem, 1.8vw, 1.1rem);
+    line-height: 1.6;
+  }
+
+  /* Grid Layout */
+  .styles-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-lg);
+  }
+
+  /* Cards */
+  .style-card {
+    position: relative;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    aspect-ratio: 4 / 5;
+    cursor: pointer;
+    box-shadow: var(--shadow-md);
+    transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+  }
+
+  .style-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .style-image-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    overflow: hidden;
+  }
+
+  .style-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    transition: transform var(--transition-slow);
+  }
+
+  .style-card:hover .style-img {
+    transform: scale(1.06);
+  }
+
+  .style-card-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.1) 0%,
+      rgba(0, 0, 0, 0.3) 50%,
+      rgba(0, 0, 0, 0.75) 100%
+    );
+    transition: opacity var(--transition-normal);
+  }
+
+  .style-card:hover .style-card-overlay {
+    background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.1) 0%,
+      rgba(0, 0, 0, 0.25) 40%,
+      rgba(0, 0, 0, 0.85) 100%
+    );
+  }
+
+  /* Content Overlay */
+  .style-content-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: var(--space-xl) var(--space-lg);
+    z-index: 5;
+    text-align: center;
+  }
+
+  .style-card-title {
+    font-size: clamp(1.1rem, 2vw, 1.4rem);
+    font-weight: 700;
+    color: white;
+    letter-spacing: -0.01em;
+    transition: transform var(--transition-normal);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+  }
+
+  .style-card:hover .style-card-title {
+    transform: translateY(-2px);
+  }
+
+  @media (max-width: 992px) {
+    .styles-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 576px) {
+    .styles-grid {
+      grid-template-columns: 1fr;
+    }
+    .style-card {
+      aspect-ratio: 4 / 3;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .styles-section {
+      padding: var(--space-3xl) 0;
+    }
+  }
+</style>

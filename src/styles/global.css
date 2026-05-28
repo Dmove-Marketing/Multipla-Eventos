@@ -48,27 +48,29 @@ button {
 
 /* === CSS Variables (customizar por projeto) === */
 :root {
-  /* Cores — ajuste para o cliente */
-  --color-primary: #C3161C;
-  --color-primary-dark: #990C11;
-  --color-secondary: #C3161C;
-  --color-accent: #C3161C;
+  /* Cores — Múltipla Eventos (Rosé Gold / Champagne) */
+  --color-primary: #b98e75;
+  --color-primary-dark: #9c735b;
+  --color-primary-light: #d1b19e;
+  --color-secondary: #b98e75;
+  --color-accent: #b98e75;
 
   /* Backgrounds */
-  --bg-primary: #000000;
-  --bg-secondary: #0E0604;
-  --bg-card: #111111;
-  --bg-elevated: #1a1a1a;
+  --bg-primary: #0a0706;
+  --bg-secondary: #130f0e;
+  --bg-card: #1c1614;
+  --bg-elevated: #261f1c;
+  --bg-rose-gold: #b98e75;
 
   /* Texto */
   --text-primary: #ffffff;
-  --text-secondary: #cccccc;
-  --text-muted: #999999;
+  --text-secondary: #e0d8d5;
+  --text-muted: #a39894;
 
   /* Gradientes */
   --gradient-primary: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
   --gradient-subtle: linear-gradient(135deg, var(--bg-secondary), var(--bg-card));
-  --gradient-glow: radial-gradient(ellipse at center, rgba(195, 22, 28, 0.15), transparent 70%);
+  --gradient-glow: radial-gradient(ellipse at center, rgba(185, 142, 117, 0.15), transparent 70%);
 
   /* Glass */
   --glass-bg: rgba(255, 255, 255, 0.05);
@@ -79,7 +81,7 @@ button {
   --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
   --shadow-md: 0 4px 20px rgba(0, 0, 0, 0.4);
   --shadow-lg: 0 8px 40px rgba(0, 0, 0, 0.5);
-  --shadow-glow: 0 0 30px rgba(195, 22, 28, 0.3);
+  --shadow-glow: 0 0 30px rgba(185, 142, 117, 0.2);
 
   /* Border radius */
   --radius-sm: 8px;
@@ -101,6 +103,7 @@ button {
   /* Typography */
   --font-display: 'Montserrat', sans-serif;
   --font-body: 'Montserrat', sans-serif;
+  --font-cursive: 'Playfair Display', serif; /* Fonte elegante para títulos cursivos */
 
   /* Container */
   --container-max: 1200px;
@@ -130,6 +133,36 @@ button {
   backdrop-filter: var(--glass-blur);
   -webkit-backdrop-filter: var(--glass-blur);
   border: 1px solid var(--glass-border);
+}
+
+.bg-watermark {
+  background-color: #ffffff;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 100 100'%3E%3Ctext x='50' y='55' font-family='Montserrat, sans-serif' font-size='22' font-weight='300' fill='rgba(185, 142, 117, 0.035)' text-anchor='middle' dominant-baseline='middle'%3EM%3C/text%3E%3C/svg%3E");
+  background-repeat: repeat;
+  color: #1a1513;
+}
+
+.bg-watermark h2,
+.bg-watermark h3 {
+  color: #1a1513;
+}
+
+.bg-watermark p {
+  color: #594f4a;
+}
+
+.bg-rose-gold-section {
+  background-color: var(--bg-rose-gold);
+  color: #ffffff;
+}
+
+.bg-rose-gold-section h2,
+.bg-rose-gold-section h3 {
+  color: #ffffff;
+}
+
+.bg-rose-gold-section p {
+  color: #f7efeb;
 }
 
 .gradient-text {
@@ -410,4 +443,19 @@ html.lenis body {
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;
   border-width: 0;
+}
+
+/* ==========================================================================
+   OCULTAÇÃO DE POPUPS LEGADOS DO WORDPRESS ELEMENTOR
+   ========================================================================== */
+.elementor-location-popup,
+.elementor-popup-modal,
+.dialog-widget-content,
+.dialog-widget {
+  display: none !important;
+}
+
+/* Oculta o botão flutuante extra do modal do WhatsApp, pois já usamos o botão flutuante animado original do Elementor */
+#wa-floating-btn {
+  display: none !important;
 }

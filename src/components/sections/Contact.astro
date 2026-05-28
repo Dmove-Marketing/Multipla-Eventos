@@ -1,0 +1,346 @@
+---
+// Contact.astro
+import LeadForm from '../forms/LeadForm.astro';
+import config from '../../../config.json';
+
+const webhookUrl = config.forms['lead-form']?.webhooks[0] || '';
+const redirectUrl = config.forms['lead-form']?.redirect_on_success || '';
+
+const customFields = [
+  {
+    name: 'servico',
+    type: 'select',
+    required: true,
+    options: [
+      { value: '', label: 'Objetivo de Contato', selected: true, disabled: true },
+      { value: 'Solicitar Orçamento', label: 'Solicitar Orçamento' },
+      { value: 'Fornecedor', label: 'Fornecedor' },
+      { value: 'Profissional buscando vaga', label: 'Profissional buscando vaga' }
+    ]
+  },
+  {
+    name: 'nome',
+    type: 'text',
+    placeholder: 'Nome completo',
+    required: true
+  },
+  {
+    name: 'telefone',
+    type: 'text', // O script forms.ts aplica a máscara telefônica e validação neste campo
+    placeholder: 'WhatsApp',
+    required: true
+  },
+  {
+    name: 'email',
+    type: 'email',
+    placeholder: 'E-mail',
+    required: true
+  },
+  {
+    name: 'tipo',
+    type: 'select',
+    required: true,
+    options: [
+      { value: '', label: 'Tipo de evento', selected: true, disabled: true },
+      { value: 'Bodas', label: 'Bodas' },
+      { value: 'Casamento', label: 'Casamento' },
+      { value: 'Outros', label: 'Outros' }
+    ]
+  },
+  {
+    name: 'data',
+    type: 'text', // flatpickr será anexado aqui
+    placeholder: 'Data do evento',
+    required: true
+  },
+  {
+    name: 'local_evento',
+    type: 'text',
+    placeholder: 'Espaço da Recepção',
+    required: true
+  },
+  {
+    name: 'convidados',
+    type: 'number',
+    placeholder: 'Quantidade de pessoas',
+    required: true
+  },
+  {
+    name: 'mensagem',
+    type: 'textarea',
+    placeholder: 'Informações adicionais (não obrigatório)'
+  },
+  {
+    name: 'fonte',
+    type: 'hidden',
+    value: 'Landing page /casamentos'
+  }
+];
+---
+
+<section class="contact-section" id="contato">
+  <!-- Imagem de Fundo Premium e Overlay -->
+  <div class="contact-bg-wrapper">
+    <!-- IMG: contato-festa-bg -->
+    <img 
+      src="/images/contato-festa-bg.jpg" 
+      alt="Festa de Casamento Múltipla Eventos" 
+      class="contact-bg" 
+      loading="lazy"
+      data-placeholder="contato-festa-bg"
+    />
+    <div class="contact-overlay"></div>
+  </div>
+
+  <div class="container contact-container">
+    <!-- Coluna de Chamada -->
+    <div class="contact-content">
+      <h2 class="contact-title">Uma celebração inesquecível começa agora.</h2>
+      <p class="contact-text">
+        Preencha o formulário e nosso assessor entrará em contato para entender o seu evento.
+      </p>
+    </div>
+
+    <!-- Coluna do Formulário -->
+    <div class="contact-form-card glass">
+      <LeadForm
+        formId="form_casamentos"
+        project={config.project_slug}
+        submitUrl={webhookUrl}
+        redirectUrl={redirectUrl}
+        submitText="Solicitar orçamento"
+        fields={customFields}
+        honeypot={true}
+      />
+    </div>
+  </div>
+</section>
+
+<!-- Flatpickr CSS e JS CDN no escopo -->
+<link rel="stylesheet" href="https://npmcdn.com/flatpickr/dist/flatpickr.min.css" />
+<script is:inline src="https://npmcdn.com/flatpickr/dist/flatpickr.min.js"></script>
+
+<script is:inline>
+  document.addEventListener('DOMContentLoaded', () => {
+    // 1. Inicialização do Flatpickr com Tradução Localizada para Português
+    const dateField = document.querySelector('input[name="data"]');
+    
+    if (dateField && window.flatpickr) {
+      window.flatpickr(dateField, {
+        disableMobile: true,
+        dateFormat: "d/m/Y",
+        locale: {
+          weekdays: { shorthand: ["Dom", "Seg", "Ter", "Qua", "Qui", "Sex", "Sáb"], longhand: ["Domingo", "Segunda-feira", "Terça-feira", "Quarta-feira", "Quinta-feira", "Sexta-feira", "Sábado"] },
+          months: { shorthand: ["Jan", "Fev", "Mar", "Abr", "Mai", "Jun", "Jul", "Ago", "Set", "Out", "Nov", "Dez"], longhand: ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"] },
+          firstDayOfWeek: 1,
+          rangeSeparator: " até ",
+          ordinal: () => "º"
+        }
+      });
+    }
+
+    // 2. Validador extra do campo WhatsApp no clique do botão (como no original)
+    const form = document.getElementById('form-form_casamentos');
+    if (form) {
+      const phoneInput = form.querySelector('input[name="telefone"]');
+      const submitBtn = form.querySelector('button[type="submit"]');
+
+      if (phoneInput && submitBtn) {
+        submitBtn.addEventListener('click', (e) => {
+          const digits = phoneInput.value.replace(/\D/g, '');
+          const correctLength = digits.length === 11;
+          const nonoDigito = digits.charAt(2) === '9';
+
+          if (!correctLength || !nonoDigito) {
+            e.preventDefault();
+            e.stopPropagation();
+            e.stopImmediatePropagation();
+            
+            phoneInput.style.borderColor = '#ef4444';
+            phoneInput.style.outline = '2px solid #ef4444';
+            phoneInput.focus();
+            
+            // Procura por msg de erro ou alerta
+            alert('Por favor, insira um celular do WhatsApp válido com 11 dígitos (DDD + 9...).');
+          } else {
+            phoneInput.style.removeProperty('border-color');
+            phoneInput.style.removeProperty('outline');
+          }
+        }, true);
+      }
+    }
+  });
+</script>
+
+<style>
+  .contact-section {
+    position: relative;
+    padding: var(--space-4xl) 0;
+    overflow: hidden;
+    background-color: #0d0908;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+  }
+
+  /* Fundo da Seção */
+  .contact-bg-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+  }
+
+  .contact-bg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+  }
+
+  .contact-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      to bottom,
+      rgba(13, 9, 8, 0.85) 0%,
+      rgba(13, 9, 8, 0.75) 50%,
+      rgba(13, 9, 8, 0.9) 100%
+    );
+  }
+
+  /* Conteúdo */
+  .contact-container {
+    position: relative;
+    z-index: 5;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-3xl);
+    align-items: center;
+  }
+
+  .contact-content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+  }
+
+  .contact-title {
+    font-size: clamp(2rem, 4vw, 2.8rem);
+    font-weight: 700;
+    line-height: 1.2;
+    color: white;
+    letter-spacing: -0.01em;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+  }
+
+  .contact-text {
+    font-size: clamp(0.95rem, 1.8vw, 1.15rem);
+    line-height: 1.6;
+    color: var(--text-secondary);
+    max-width: 480px;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+  }
+
+  /* Card de Vidro do Formulário */
+  .contact-form-card {
+    border-radius: var(--radius-lg);
+    padding: var(--space-2xl);
+    box-shadow: var(--shadow-lg);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  /* Customizações de Estilo do Form específico para o Card de Vidro */
+  :global(.contact-form-card .lead-form) {
+    max-width: 100%;
+  }
+
+  :global(.contact-form-card .form-input),
+  :global(.contact-form-card .form-select),
+  :global(.contact-form-card .form-textarea) {
+    background: rgba(0, 0, 0, 0.45);
+    border-color: rgba(255, 255, 255, 0.1);
+    color: white;
+    font-size: 0.9rem;
+    padding: 12px 16px;
+    border-radius: var(--radius-sm);
+  }
+
+  :global(.contact-form-card .form-input:focus),
+  :global(.contact-form-card .form-select:focus),
+  :global(.contact-form-card .form-textarea:focus) {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(185, 142, 117, 0.2);
+  }
+
+  :global(.contact-form-card .form-input::placeholder),
+  :global(.contact-form-card .form-textarea::placeholder) {
+    color: rgba(255, 255, 255, 0.4);
+  }
+
+  :global(.contact-form-card .form-select) {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='rgba(255,255,255,0.4)' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    background-size: 16px;
+  }
+
+  :global(.contact-form-card .form-select option) {
+    background-color: #1c1614;
+    color: white;
+  }
+
+  :global(.contact-form-card .form-submit) {
+    background-color: var(--color-primary);
+    border-radius: var(--radius-sm);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 14px;
+    margin-top: var(--space-sm);
+    transition: background-color 0.2s, transform 0.2s;
+  }
+
+  :global(.contact-form-card .form-submit:hover) {
+    background-color: var(--color-primary-dark);
+  }
+
+  :global(.contact-form-card .form-footer) {
+    color: var(--text-muted);
+    font-size: 0.72rem;
+  }
+
+  @media (max-width: 992px) {
+    .contact-container {
+      grid-template-columns: 1fr;
+      gap: var(--space-2xl);
+    }
+
+    .contact-content {
+      text-align: center;
+      align-items: center;
+    }
+
+    .contact-form-card {
+      max-width: 600px;
+      margin: 0 auto;
+      width: 100%;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .contact-section {
+      padding: var(--space-3xl) 0;
+    }
+    .contact-form-card {
+      padding: var(--space-xl) var(--space-md);
+    }
+  }
+</style>

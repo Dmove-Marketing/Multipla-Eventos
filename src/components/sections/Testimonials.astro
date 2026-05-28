@@ -1,0 +1,360 @@
+---
+// Testimonials.astro
+const testimonials = [
+  {
+    text: "A Multipla/ Vinícius fez a assessoria do meu casamento. Ganhamos um amigo nessa organização. O Vinícius e a equipe fizeram com que tudo fosse perfeito, esteve presente desde as assinaturas do contrário até a organização final. Já estive com a Multipla em outros eventos e sempre impecável o trabalho! Super recomendo.",
+    author: "Ana Flávia Torres Sampaio"
+  },
+  {
+    text: "Foi incrível ter a múltipla como assessoria do nosso casamento. A festa foi realizada em maio desse ano (2022), tudo planejado com antecedência e tranquilidade. Vinícius e Thâmisa que nos atenderam, foram muito profissionais, sempre nos orientando e ponderando todas situações. Recomendo de olhos fechados. Já estamos com saudades, já planejando a festa de bodas.",
+    author: "Juliana Ornelas"
+  },
+  {
+    text: "Não temos palavras suficientes para agradecer por tudo o que vocês fizeram por nós. O nosso casamento foi perfeito e grande parte disso se deve à dedicação, ao carinho e ao profissionalismo de vocês. Vocês cuidaram de tudo com tanto amor e atenção. A organização impecável e a sensibilidade com que conduziram cada momento fizeram toda a diferença.<br><br>Obrigado por sonharem com a gente, por estarem presentes com tanto coração e por transformarem o nosso dia em algo ainda mais especial do que poderíamos imaginar. Levaremos vocês para sempre com muito carinho na nossa história. E que muitos outros casais tenham a sorte de contar com vocês nessa jornada tão linda.",
+    author: "Karina & Marcelo"
+  },
+  {
+    text: "Quero agradecer toda a equipe da MultiplaEventos pelo dia de ontem, foi uma noite incrível, sempre estive segura desse evento, sempre tive em mente a certeza de que eu tinha profissionais extraordinários por trás desse evento extraordinário. Vocês fizeram toda a diferença no nosso evento, foi tudo feito com todo o cuidado e dedicação por todos. Daniela, você é uma profissional extraordinária! Com certeza recomendaria essa empresa. Agradeço a toda sua equipe por nos apoiar. 🙌🏻🙏🏻",
+    author: "Vanessa & Felipe"
+  },
+  {
+    text: "Agora… um pouquinho depois do aniversário da Bia e já recuperados da festança 😄, a gente segue revivendo cada detalhe com um misto de emoção e gratidão. E não tem como falar dessa festa sem falar de você, Lu. Você foi o fio condutor que fez tudo acontecer da melhor maneira possível. Coordenou cada frente: buffet, decoração, maquiadores, DJ, prestadores, fornecedores… tudo com uma leveza e firmeza que só quem ama o que faz consegue ter. A sintonia com a equipe da Noma, o cuidado com os detalhes, o olhar atento para o que importava de verdade... tudo refletiu o seu profissionalismo e dedicação. A festa foi um sucesso, e muito disso é mérito seu. Obrigada por ter nos acompanhado em cada etapa, por ter acolhido nossas ideias (e ansiedades 😅), e por ter feito com que tudo fluísse com tanta harmonia. Em nome da Bia, do Fernando e de toda a nossa família, o nosso carinho e um agradecimento enorme por ter feito parte desse momento inesquecível. 💛",
+    author: "Fernanda Mascarenhas"
+  },
+  {
+    text: "Passando para agradecer a linda festa de sábado e por toda a sua dedicação em fazer tudo funcionar com tanto carinho como a Fernanda e nossa Família! Obrigada pela nossa parceira tão especial ao longo do tempo! Obrigada por me compreender no meu próprio processo de organizar as coisas e saiba que eu confiei muito em você e na Múltipla! Equipe Múltipla, obrigada pelo processo nesse último ano: da primeira reunião com a Jessica até toda a equipe que estava na festa, que foram muito gentis e atenciosos conosco! A Família Mascarenhas agradece demais por esse processo que foi lindo! 🥰",
+    author: "Família Mascarenhas"
+  }
+];
+---
+
+<section class="testimonials-section bg-rose-gold-section">
+  <div class="container testimonials-container">
+    <h2 class="testimonials-title">
+      O que dizem os casais <br class="desktop-only" />que viveram a experiência Múltipla?
+    </h2>
+
+    <div class="slider-outer-wrapper">
+      <!-- Botão Anterior -->
+      <button class="slider-nav-btn prev-btn" id="testimonial-prev" aria-label="Depoimento anterior">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </button>
+
+      <!-- Slides -->
+      <div class="slider-viewport">
+        <div class="slider-track" id="testimonial-track">
+          {testimonials.map((item, index) => (
+            <div class={`testimonial-slide ${index === 0 ? 'active' : ''}`} data-index={index}>
+              <div class="testimonial-card">
+                <div class="quote-icon">“</div>
+                <div class="testimonial-content">
+                  <p class="testimonial-text" set:html={item.text}></p>
+                </div>
+                <div class="testimonial-footer">
+                  <cite class="testimonial-author">{item.author}</cite>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Botão Próximo -->
+      <button class="slider-nav-btn next-btn" id="testimonial-next" aria-label="Próximo depoimento">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="9 18 15 12 9 6"></polyline>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Indicadores -->
+    <div class="slider-dots" id="testimonial-dots">
+      {testimonials.map((_, index) => (
+        <button class={`slider-dot ${index === 0 ? 'active' : ''}`} data-index={index} aria-label={`Ir para depoimento ${index + 1}`}></button>
+      ))}
+    </div>
+  </div>
+</section>
+
+<script is:inline>
+  document.addEventListener('DOMContentLoaded', () => {
+    const track = document.getElementById('testimonial-track');
+    const slides = document.querySelectorAll('.testimonial-slide');
+    const dots = document.querySelectorAll('.slider-dot');
+    const prevBtn = document.getElementById('testimonial-prev');
+    const nextBtn = document.getElementById('testimonial-next');
+    
+    let currentIndex = 0;
+    const totalSlides = slides.length;
+    let autoplayTimer;
+
+    const updateSlider = (index) => {
+      // Garante limites circulares
+      if (index < 0) index = totalSlides - 1;
+      if (index >= totalSlides) index = 0;
+
+      currentIndex = index;
+
+      // Remove classes ativas antigas e adiciona às novas
+      slides.forEach((slide, idx) => {
+        if (idx === currentIndex) {
+          slide.classList.add('active');
+        } else {
+          slide.classList.remove('active');
+        }
+      });
+
+      dots.forEach((dot, idx) => {
+        if (idx === currentIndex) {
+          dot.classList.add('active');
+        } else {
+          dot.classList.remove('active');
+        }
+      });
+
+      // Aplica offset de translação suave no track
+      const offset = -currentIndex * 100;
+      track.style.transform = `translateX(${offset}%)`;
+      
+      resetAutoplay();
+    };
+
+    const nextSlide = () => updateSlider(currentIndex + 1);
+    const prevSlide = () => updateSlider(currentIndex - 1);
+
+    // Event listeners
+    if (nextBtn) nextBtn.addEventListener('click', nextSlide);
+    if (prevBtn) prevBtn.addEventListener('click', prevSlide);
+
+    dots.forEach((dot, idx) => {
+      dot.addEventListener('click', () => updateSlider(idx));
+    });
+
+    // Autoplay
+    const startAutoplay = () => {
+      autoplayTimer = setInterval(nextSlide, 8000);
+    };
+
+    const resetAutoplay = () => {
+      clearInterval(autoplayTimer);
+      startAutoplay();
+    };
+
+    // Suporte a gestos Swipe para celular
+    let startX = 0;
+    let endX = 0;
+    
+    track.addEventListener('touchstart', (e) => {
+      startX = e.touches[0].clientX;
+    }, { passive: true });
+
+    track.addEventListener('touchend', (e) => {
+      endX = e.changedTouches[0].clientX;
+      const diffX = startX - endX;
+      if (Math.abs(diffX) > 50) {
+        if (diffX > 0) {
+          nextSlide();
+        } else {
+          prevSlide();
+        }
+      }
+    }, { passive: true });
+
+    startAutoplay();
+  });
+</script>
+
+<style>
+  .testimonials-section {
+    padding: var(--space-4xl) 0;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .testimonials-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-3xl);
+  }
+
+  .testimonials-title {
+    font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+    font-weight: 700;
+    text-align: center;
+    line-height: 1.25;
+    letter-spacing: -0.01em;
+    color: white;
+  }
+
+  /* Slider Layout */
+  .slider-outer-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+  }
+
+  .slider-viewport {
+    width: 100%;
+    overflow: hidden;
+    border-radius: var(--radius-lg);
+  }
+
+  .slider-track {
+    display: flex;
+    width: 100%;
+    transition: transform var(--transition-slow);
+  }
+
+  /* Testimonial Slide & Card */
+  .testimonial-slide {
+    min-width: 100%;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px;
+    opacity: 0.3;
+    transform: scale(0.97);
+    transition: opacity var(--transition-normal), transform var(--transition-normal);
+  }
+
+  .testimonial-slide.active {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  .testimonial-card {
+    background-color: #ffffff;
+    border-radius: var(--radius-lg);
+    padding: var(--space-2xl) var(--space-2xl) var(--space-xl);
+    box-shadow: var(--shadow-lg);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+    min-height: 280px;
+    justify-content: space-between;
+  }
+
+  .quote-icon {
+    position: absolute;
+    top: 15px;
+    left: 24px;
+    font-size: 5rem;
+    line-height: 1;
+    font-family: var(--font-cursive);
+    color: rgba(185, 142, 117, 0.15);
+    pointer-events: none;
+    user-select: none;
+  }
+
+  .testimonial-content {
+    position: relative;
+    z-index: 2;
+  }
+
+  .testimonial-text {
+    font-size: clamp(0.95rem, 1.8vw, 1.05rem);
+    line-height: 1.8;
+    color: #3d3431;
+    font-style: italic;
+  }
+
+  .testimonial-footer {
+    display: flex;
+    justify-content: flex-end;
+    border-top: 1px solid rgba(185, 142, 117, 0.12);
+    padding-top: var(--space-md);
+  }
+
+  .testimonial-author {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--color-primary-dark);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  /* Slider Nav Buttons */
+  .slider-nav-btn {
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: white;
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.2s;
+    flex-shrink: 0;
+    backdrop-filter: blur(5px);
+  }
+
+  .slider-nav-btn:hover {
+    background-color: rgba(255, 255, 255, 0.25);
+    transform: scale(1.05);
+  }
+
+  .slider-nav-btn:active {
+    transform: scale(0.95);
+  }
+
+  /* Dots */
+  .slider-dots {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-sm);
+  }
+
+  .slider-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.35);
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+  }
+
+  .slider-dot.active {
+    background-color: #ffffff;
+    transform: scale(1.2);
+  }
+
+  @media (max-width: 768px) {
+    .slider-outer-wrapper {
+      gap: 0;
+    }
+
+    .slider-nav-btn {
+      display: none; /* Esconde botões no mobile para priorizar toque swipe */
+    }
+
+    .testimonial-card {
+      padding: var(--space-xl) var(--space-lg);
+      min-height: auto;
+    }
+
+    .quote-icon {
+      font-size: 3.5rem;
+      top: 10px;
+      left: 15px;
+    }
+  }
+
+  .desktop-only {
+    display: inline;
+  }
+
+  @media (max-width: 992px) {
+    .desktop-only {
+      display: none;
+    }
+  }
+</style>

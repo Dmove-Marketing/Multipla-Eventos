@@ -1,0 +1,78 @@
+---
+// VideoSection.astro
+---
+
+<section class="video-section bg-watermark">
+  <div class="container video-container">
+    <h2 class="video-title">Seu casamento muito além do seu sonho.</h2>
+    
+    <div class="video-wrapper">
+      <div class="video-ratio-box">
+        <iframe 
+          src="https://fast.wistia.net/embed/iframe/b3jodnigjg?videoFoam=true" 
+          title="Seu casamento muito além do seu sonho - Múltipla Eventos" 
+          allow="autoplay; fullscreen" 
+          allowtransparency="true" 
+          frameborder="0" 
+          scrolling="no" 
+          class="wistia-iframe" 
+          name="wistia_embed" 
+          msallowfullscreen 
+          style="border: 0; position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
+        ></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .video-section {
+    padding: var(--space-4xl) 0;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .video-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-3xl);
+  }
+
+  .video-title {
+    font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+    font-weight: 700;
+    text-align: center;
+    line-height: 1.25;
+    letter-spacing: -0.01em;
+    max-width: 720px;
+  }
+
+  .video-wrapper {
+    width: 100%;
+    max-width: 900px;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+    border: 1px solid rgba(185, 142, 117, 0.1);
+    background-color: #000;
+    transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+  }
+
+  .video-wrapper:hover {
+    transform: scale(1.005);
+    box-shadow: 0 12px 30px rgba(185, 142, 117, 0.15);
+  }
+
+  .video-ratio-box {
+    position: relative;
+    width: 100%;
+    padding-top: 56.25%; /* Aspect Ratio 16:9 */
+  }
+
+  @media (max-width: 768px) {
+    .video-section {
+      padding: var(--space-3xl) 0;
+    }
+  }
+</style>

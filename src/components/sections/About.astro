@@ -1,0 +1,104 @@
+---
+// About.astro
+---
+
+<section class="about-section bg-rose-gold-section">
+  <div class="container about-container">
+    <!-- Coluna de Texto -->
+    <div class="about-content">
+      <h2 class="about-title">
+        Há 25 anos transformando cada detalhe de seu casamento em uma obra-prima.
+      </h2>
+      <p class="about-text">
+        Cada casamento começa por entender quem você é e qual o seu sonho. O espaço ideal, o clima que imaginou, os detalhes que fazem diferença para vocês dois. A partir daí, nossa equipe cuida de absolutamente tudo, dos primeiros planejamentos ao grande dia, para que você esteja presente em cada momento sem se preocupar com nada.
+      </p>
+    </div>
+
+    <!-- Coluna de Imagem -->
+    <div class="about-image-wrapper">
+      <!-- IMG: apresentacao-noiva -->
+      <img 
+        src="/images/apresentacao-noiva.jpg" 
+        alt="Preparação da noiva - Múltipla Eventos" 
+        class="about-img" 
+        loading="lazy"
+        data-placeholder="apresentacao-noiva"
+      />
+    </div>
+  </div>
+</section>
+
+<style>
+  .about-section {
+    padding: var(--space-4xl) 0;
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .about-container {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: var(--space-3xl);
+    align-items: center;
+  }
+
+  .about-content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+  }
+
+  .about-title {
+    font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+    font-weight: 700;
+    line-height: 1.25;
+    letter-spacing: -0.01em;
+  }
+
+  .about-text {
+    font-size: clamp(0.95rem, 1.8vw, 1.05rem);
+    line-height: 1.8;
+  }
+
+  .about-image-wrapper {
+    position: relative;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+    aspect-ratio: 4 / 3;
+    transition: transform var(--transition-normal);
+  }
+
+  .about-image-wrapper:hover {
+    transform: scale(1.01);
+  }
+
+  .about-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+  }
+
+  @media (max-width: 992px) {
+    .about-container {
+      grid-template-columns: 1fr;
+      gap: var(--space-2xl);
+    }
+
+    .about-image-wrapper {
+      max-width: 600px;
+      margin: 0 auto;
+      width: 100%;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .about-section {
+      padding: var(--space-3xl) 0;
+    }
+  }
+</style>

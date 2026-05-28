@@ -241,7 +241,6 @@ const groupCls  = (full?: boolean) => {
     flex-direction: column;
     gap: var(--space-md, 1rem);
     width: 100%;
-    max-width: 440px;
   }
 
   .lead-form-grid {
@@ -272,26 +271,44 @@ const groupCls  = (full?: boolean) => {
   .form-select,
   .form-textarea {
     width: 100%;
-    padding: 10px 14px;
-    border: 1px solid var(--glass-border, #d1d5db);
-    border-radius: 6px;
+    padding: 10px 16px;
+    border: 0;
+    border-radius: 20px;
     font-size: 0.95rem;
-    background: var(--bg-card, #fff);
-    color: var(--text-primary, #111);
-    transition: border-color 0.15s;
+    background: rgba(255, 255, 255, 0.8);
+    color: #000;
+    transition: box-shadow 0.2s;
     font-family: inherit;
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    appearance: none;
+  }
+
+  .form-select {
+    padding-right: 20px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23333' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+    background-size: 12px;
+    cursor: pointer;
   }
 
   .form-input:focus,
   .form-select:focus,
   .form-textarea:focus {
     outline: none;
-    border-color: var(--color-primary, #2563eb);
+    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.5);
   }
 
   .form-input::placeholder,
   .form-textarea::placeholder {
-    color: var(--text-muted, #999);
+    color: #666;
+  }
+
+  .form-textarea {
+    border-radius: 20px;
+    resize: vertical;
+    min-height: 80px;
   }
 
   .field-error {
@@ -307,9 +324,25 @@ const groupCls  = (full?: boolean) => {
   .form-submit {
     width: 100%;
     margin-top: var(--space-sm, 0.5rem);
-    font-size: 1.05rem;
+    font-size: 0.95rem;
+    font-weight: 500;
     padding: 14px var(--space-xl, 2rem);
     cursor: pointer;
+    background: rgb(57, 56, 55);
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 1);
+    border-radius: 24px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    transition: background 0.2s, transform 0.1s;
+  }
+
+  .form-submit:hover {
+    background: rgb(80, 79, 78);
+  }
+
+  .form-submit:active {
+    transform: scale(0.98);
   }
 
   .form-submit:disabled {
@@ -333,6 +366,10 @@ const groupCls  = (full?: boolean) => {
     color: #ef4444;
     font-size: 0.875rem;
     margin-top: 4px;
+    display: none;
+  }
+
+  .form-footer {
     display: none;
   }
 
@@ -378,11 +415,5 @@ const groupCls  = (full?: boolean) => {
   .form-success-text {
     color: var(--text-secondary, #666);
     font-size: 0.9rem;
-  }
-
-  .form-footer {
-    font-size: 0.75rem;
-    color: var(--text-secondary, #888);
-    text-align: center;
   }
 </style>
