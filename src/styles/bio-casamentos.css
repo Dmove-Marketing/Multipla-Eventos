@@ -1,69 +1,308 @@
-/* Estilos extraídos de bio-casamentos.html */
+/* ==========================================
+   MÚLTIPLA EVENTOS - BIO CASAMENTOS
+   Estilos CSS Semânticos e Clean-Room (Zero WP)
+   ========================================== */
 
-img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
-/*# sourceURL=wp-img-auto-sizes-contain-inline-css */
-
-img.wp-smiley, img.emoji {
-		display: inline !important;
-		border: none !important;
-		box-shadow: none !important;
-		height: 1em !important;
-		width: 1em !important;
-		margin: 0 0.07em !important;
-		vertical-align: -0.1em !important;
-		background: none !important;
-		padding: 0 !important;
-	}
-/*# sourceURL=wp-emoji-styles-inline-css */
-
-:root{--wp--preset--aspect-ratio--square: 1;--wp--preset--aspect-ratio--4-3: 4/3;--wp--preset--aspect-ratio--3-4: 3/4;--wp--preset--aspect-ratio--3-2: 3/2;--wp--preset--aspect-ratio--2-3: 2/3;--wp--preset--aspect-ratio--16-9: 16/9;--wp--preset--aspect-ratio--9-16: 9/16;--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgb(6,147,227) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgb(252,185,0) 0%,rgb(255,105,0) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgb(255,105,0) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;--wp--preset--spacing--20: 0.44rem;--wp--preset--spacing--30: 0.67rem;--wp--preset--spacing--40: 1rem;--wp--preset--spacing--50: 1.5rem;--wp--preset--spacing--60: 2.25rem;--wp--preset--spacing--70: 3.38rem;--wp--preset--spacing--80: 5.06rem;--wp--preset--shadow--natural: 6px 6px 9px rgba(0, 0, 0, 0.2);--wp--preset--shadow--deep: 12px 12px 50px rgba(0, 0, 0, 0.4);--wp--preset--shadow--sharp: 6px 6px 0px rgba(0, 0, 0, 0.2);--wp--preset--shadow--outlined: 6px 6px 0px -3px rgb(255, 255, 255), 6px 6px rgb(0, 0, 0);--wp--preset--shadow--crisp: 6px 6px 0px rgb(0, 0, 0);}:root { --wp--style--global--content-size: 800px;--wp--style--global--wide-size: 1200px; }:where(body) { margin: 0; }.wp-site-blocks > .alignleft { float: left; margin-right: 2em; }.wp-site-blocks > .alignright { float: right; margin-left: 2em; }.wp-site-blocks > .aligncenter { justify-content: center; margin-left: auto; margin-right: auto; }:where(.wp-site-blocks) > * { margin-block-start: 24px; margin-block-end: 0; }:where(.wp-site-blocks) > :first-child { margin-block-start: 0; }:where(.wp-site-blocks) > :last-child { margin-block-end: 0; }:root { --wp--style--block-gap: 24px; }:root :where(.is-layout-flow) > :first-child{margin-block-start: 0;}:root :where(.is-layout-flow) > :last-child{margin-block-end: 0;}:root :where(.is-layout-flow) > *{margin-block-start: 24px;margin-block-end: 0;}:root :where(.is-layout-constrained) > :first-child{margin-block-start: 0;}:root :where(.is-layout-constrained) > :last-child{margin-block-end: 0;}:root :where(.is-layout-constrained) > *{margin-block-start: 24px;margin-block-end: 0;}:root :where(.is-layout-flex){gap: 24px;}:root :where(.is-layout-grid){gap: 24px;}.is-layout-flow > .alignleft{float: left;margin-inline-start: 0;margin-inline-end: 2em;}.is-layout-flow > .alignright{float: right;margin-inline-start: 2em;margin-inline-end: 0;}.is-layout-flow > .aligncenter{margin-left: auto !important;margin-right: auto !important;}.is-layout-constrained > .alignleft{float: left;margin-inline-start: 0;margin-inline-end: 2em;}.is-layout-constrained > .alignright{float: right;margin-inline-start: 2em;margin-inline-end: 0;}.is-layout-constrained > .aligncenter{margin-left: auto !important;margin-right: auto !important;}.is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alignfull)){max-width: var(--wp--style--global--content-size);margin-left: auto !important;margin-right: auto !important;}.is-layout-constrained > .alignwide{max-width: var(--wp--style--global--wide-size);}body .is-layout-flex{display: flex;}.is-layout-flex{flex-wrap: wrap;align-items: center;}.is-layout-flex > :is(*, div){margin: 0;}body .is-layout-grid{display: grid;}.is-layout-grid > :is(*, div){margin: 0;}body{padding-top: 0px;padding-right: 0px;padding-bottom: 0px;padding-left: 0px;}a:where(:not(.wp-element-button)){text-decoration: underline;}:root :where(.wp-element-button, .wp-block-button__link){background-color: #32373c;border-width: 0;color: #fff;font-family: inherit;font-size: inherit;font-style: inherit;font-weight: inherit;letter-spacing: inherit;line-height: inherit;padding-top: calc(0.667em + 2px);padding-right: calc(1.333em + 2px);padding-bottom: calc(0.667em + 2px);padding-left: calc(1.333em + 2px);text-decoration: none;text-transform: inherit;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}
-:root :where(.wp-block-pullquote){font-size: 1.5em;line-height: 1.6;}
-/*# sourceURL=global-styles-inline-css */
-
-.e-con.e-parent:nth-of-type(n+4):not(.e-lazyloaded):not(.e-no-lazyload),
-				.e-con.e-parent:nth-of-type(n+4):not(.e-lazyloaded):not(.e-no-lazyload) * {
-					background-image: none !important;
-				}
-				@media screen and (max-height: 1024px) {
-					.e-con.e-parent:nth-of-type(n+3):not(.e-lazyloaded):not(.e-no-lazyload),
-					.e-con.e-parent:nth-of-type(n+3):not(.e-lazyloaded):not(.e-no-lazyload) * {
-						background-image: none !important;
-					}
-				}
-				@media screen and (max-height: 640px) {
-					.e-con.e-parent:nth-of-type(n+2):not(.e-lazyloaded):not(.e-no-lazyload),
-					.e-con.e-parent:nth-of-type(n+2):not(.e-lazyloaded):not(.e-no-lazyload) * {
-						background-image: none !important;
-					}
-				}
-
-/*
-Resolve conflitos de layout e visibilidade com temas.
-*/
-/* 1. Força o container principal (mês e ano) a ter um layout flexível e alinhado. */
-.flatpickr-current-month {
-display: flex !important;
-flex-direction: row !important;
-justify-content: center !important;
-align-items: center !important;
-position: relative !important;
+/* 1. Reset & Setup Geral */
+.bio-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 0 0 0;
+  background-image: url('../assets/images/Prancheta-6-novembro.avif');
+  background-size: cover;
+  background-position: center top;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  font-family: 'Raleway', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  color: #333;
+  box-sizing: border-box;
 }
 
-/* 2. Reseta a posição do container do ano e garante que ele seja um bloco em linha. */
-.flatpickr-months .numInputWrapper {
-	display: inline-block !important;
-	position: static !important;
+.bio-page * {
+  box-sizing: border-box;
 }
 
-/* Ajuste de fonte para h2 solicitado pelo usuário */
-h2,
-.elementor-heading-title,
-h2.elementor-heading-title {
-  font-size: 32px !important;
-  line-height: 32px !important;
+.bio-container {
+  width: 100%;
+  max-width: 520px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 0 15px;
+  margin-bottom: 40px;
 }
 
-/* Oculta o botão flutuante do WhatsApp específico das bios */
-.elementor-element-bfa13f1 {
+/* 2. Card do Topo (Header) */
+.bio-card {
+  height: 240px;
+  background-image: url('../assets/images/Multipla_Galeria00005.avif');
+  background-size: cover;
+  background-position: center;
+  border-radius: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.bio-logo-wrapper {
+  width: 120px;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.bio-logo {
+  width: 100% !important;
+  height: auto !important;
+  max-width: 100%;
+  display: block;
+}
+
+/* 3. Botão WhatsApp (Fale conosco) */
+.bio-btn-whatsapp {
+  width: 100%;
+  background-color: #393837;
+  color: #ffffff;
+  border-radius: 30px;
+  padding: 15px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  font-family: 'Bitter', Georgia, serif;
+  font-size: 15px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(57, 56, 55, 0.2);
+}
+
+.bio-btn-whatsapp:hover {
+  background-color: #262524;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(57, 56, 55, 0.3);
+}
+
+.whatsapp-icon {
+  width: 18px;
+  height: 18px;
+  fill: currentColor;
+}
+
+/* 4. Container do Formulário */
+.bio-form-section {
+  background-color: #393837;
+  border-radius: 30px;
+  padding: 25px 20px;
+  box-shadow: 0 10px 30px rgba(57, 56, 55, 0.25);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.bio-form-title {
+  margin: 0;
+  color: #ffffff;
+  font-family: 'Bitter', Georgia, serif;
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 32px;
+  text-align: center;
+}
+
+/* 5. Customização do LeadForm */
+:global(.lead-form) {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+:global(.lead-form .form-group) {
+  width: 100%;
+}
+
+:global(.lead-form input[type="text"]),
+:global(.lead-form input[type="email"]),
+:global(.lead-form input[type="tel"]),
+:global(.lead-form input[type="number"]),
+:global(.lead-form select),
+:global(.lead-form textarea) {
+  width: 100%;
+  height: 47px;
+  background-color: rgba(255, 255, 255, 0.8) !important;
+  color: #000000 !important;
+  border-radius: 20px !important;
+  border: none !important;
+  padding: 6px 20px 6px 16px !important;
+  font-family: 'Raleway', sans-serif !important;
+  font-size: 16px !important;
+  transition: all 0.3s ease;
+  outline: none;
+}
+
+:global(.lead-form textarea) {
+  height: 100px !important;
+  padding-top: 12px !important;
+  resize: none;
+}
+
+:global(.lead-form select) {
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23333' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E") !important;
+  background-repeat: no-repeat !important;
+  background-position: right 15px center !important;
+  background-size: 14px !important;
+}
+
+:global(.lead-form input:focus),
+:global(.lead-form select:focus),
+:global(.lead-form textarea:focus) {
+  background-color: #ffffff !important;
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.3);
+}
+
+:global(.lead-form input::placeholder),
+:global(.lead-form textarea::placeholder) {
+  color: #666666 !important;
+  opacity: 1;
+}
+
+/* 6. Estilização do Botão de Submit */
+:global(.lead-form button[type="submit"]),
+:global(.lead-form .form-submit) {
+  width: 100%;
+  height: 47px;
+  background-color: #6e9caf !important;
+  color: #ffffff !important;
+  border-radius: 24px !important;
+  border: 1px solid rgba(255, 255, 255, 0.3) !important;
+  font-family: 'Raleway', sans-serif !important;
+  font-size: 15px !important;
+  font-weight: 650 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 5px;
+}
+
+:global(.lead-form button[type="submit"]:hover),
+:global(.lead-form .form-submit:hover) {
+  background-color: #ffffff !important;
+  color: #6e9caf !important;
+  border-color: #ffffff !important;
+  box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2);
+}
+
+/* Mensagem de Erro de Validação de Telefone */
+:global(.telefone-erro-msg) {
+  color: #ff4a4a !important;
+  font-size: 12px;
+  display: block;
+  margin-top: 5px;
+  padding-left: 15px;
+  font-weight: 500;
+}
+
+/* 7. Footer */
+.bio-footer {
+  width: 100%;
+  background-color: #393837;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  padding: 35px 20px;
+  text-align: center;
+  margin-top: auto;
+}
+
+.bio-copyright {
+  margin: 0;
+  font-size: 13px;
+  color: #ffffff;
+  line-height: 1.4;
+  opacity: 0.9;
+  text-align: center;
+}
+
+.bio-footer-logo-wrapper {
+  width: 80px;
+  height: auto;
+  opacity: 0.9;
+  transition: opacity 0.3s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.bio-footer-logo-wrapper:hover {
+  opacity: 1;
+}
+
+.bio-footer-logo {
+  width: 100% !important;
+  height: auto !important;
+  display: block;
+}
+
+.bio-credits {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-size: 13px;
+  color: #ffffff;
+  opacity: 0.9;
+}
+
+.bio-credits a {
+  display: flex;
+  align-items: center;
+  width: 70px;
+  height: auto;
+}
+
+.bio-dmove-logo {
+  width: 100% !important;
+  height: auto !important;
+  display: block;
+}
+
+/* Responsividade Desktop para o Footer */
+@media (min-width: 768px) {
+  .bio-footer {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    padding: 25px 40px;
+    gap: 20px;
+  }
+
+  .bio-copyright {
+    text-align: left;
+  }
+
+  .bio-footer-logo-wrapper {
+    justify-self: center;
+  }
+
+  .bio-credits {
+    justify-content: flex-end;
+  }
+}
+
+/* 8. WhatsApp Modal Global Overrides (para as Bios) */
+:global(#wa-floating-btn) {
   display: none !important;
 }

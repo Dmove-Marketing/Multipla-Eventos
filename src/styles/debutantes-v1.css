@@ -23,60 +23,77 @@ img.wp-smiley, img.emoji {
    ========================================================================== */
 
 /* Galeria Grid Customizada (substitui Elementor e-gallery) */
-.astro-gallery-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 0;
-  width: 100%;
+.gallery-grid-section {
+  position: relative !important;
+  background-color: #FFFFFF !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
 }
 
-.astro-gallery-grid .e-gallery-item {
-  position: relative;
-  display: block;
-  overflow: hidden;
-  aspect-ratio: 3 / 2;
-  cursor: pointer;
-  text-decoration: none;
+.gallery-grid {
+  display: grid !important;
+  grid-template-columns: repeat(4, 1fr) !important;
+  gap: 0 !important;
+  width: 100% !important;
 }
 
-.astro-gallery-grid .gallery-img-fit {
+.gallery-item {
+  position: relative !important;
+  display: block !important;
+  overflow: hidden !important;
+  aspect-ratio: 3 / 2 !important;
+  cursor: pointer !important;
+  text-decoration: none !important;
+}
+
+.gallery-img {
   width: 100% !important;
   height: 100% !important;
   object-fit: cover !important;
-  display: block;
-  transition: transform 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+  display: block !important;
+  transition: transform 800ms cubic-bezier(0.165, 0.84, 0.44, 1) !important;
 }
 
-.astro-gallery-grid .e-gallery-item:hover .gallery-img-fit {
-  transform: scale(1.08);
+.gallery-item:hover .gallery-img {
+  transform: scale(1.08) !important;
 }
 
-.gallery-item-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0);
-  transition: background 0.35s ease;
-  pointer-events: none;
+.gallery-overlay {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  background: rgba(0, 0, 0, 0) !important;
+  transition: background 800ms ease !important;
+  pointer-events: none !important;
 }
 
-.astro-gallery-grid .e-gallery-item:hover .gallery-item-overlay {
-  background: rgba(0, 0, 0, 0.25);
+.gallery-item:hover .gallery-overlay {
+  background: rgba(0, 0, 0, 0.5) !important;
 }
 
 @media (max-width: 1024px) {
-  .astro-gallery-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
+  .gallery-grid-section {
+    padding: 10px !important;
+  }
+
+  .gallery-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 10px !important;
   }
 }
 
 @media (max-width: 767px) {
-  .astro-gallery-grid {
-    grid-template-columns: 1fr;
-    gap: 10px;
+  .gallery-grid-section {
+    padding: 10px !important;
+  }
+
+  .gallery-grid {
+    grid-template-columns: 1fr !important;
+    gap: 10px !important;
   }
 }
 
@@ -251,23 +268,6 @@ img.wp-smiley, img.emoji {
 :root :where(.wp-block-pullquote){font-size: 1.5em;line-height: 1.6;}
 /*# sourceURL=global-styles-inline-css */
 
-.e-con.e-parent:nth-of-type(n+4):not(.e-lazyloaded):not(.e-no-lazyload),
-				.e-con.e-parent:nth-of-type(n+4):not(.e-lazyloaded):not(.e-no-lazyload) * {
-					background-image: none !important;
-				}
-				@media screen and (max-height: 1024px) {
-					.e-con.e-parent:nth-of-type(n+3):not(.e-lazyloaded):not(.e-no-lazyload),
-					.e-con.e-parent:nth-of-type(n+3):not(.e-lazyloaded):not(.e-no-lazyload) * {
-						background-image: none !important;
-					}
-				}
-				@media screen and (max-height: 640px) {
-					.e-con.e-parent:nth-of-type(n+2):not(.e-lazyloaded):not(.e-no-lazyload),
-					.e-con.e-parent:nth-of-type(n+2):not(.e-lazyloaded):not(.e-no-lazyload) * {
-						background-image: none !important;
-					}
-				}
-
 /*
 Resolve conflitos de layout e visibilidade com temas.
 */
@@ -291,5 +291,949 @@ wistia-player[media-id='xavswz9yaq']:not(:defined) { background: center / contai
 @font-face {
 font-family: 'WistiaPlayerInterNumbersSemiBold';
 font-feature-settings: 'tnum' 1;
-src: url(data:application/x-font-woff;charset=utf-8;base64,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);
+src: url(data:application/x-font-woff;charset=utf-8;base64,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);
+}
+
+/* ==========================================================================
+   CLEAN-ROOM MIGRATION: SEÇÃO 1 (HERO)
+   ========================================================================== */
+
+.hero-section {
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: flex-end !important;
+  align-items: center !important;
+  min-height: 100vh !important;
+  width: 100% !important;
+  position: relative !important;
+  background-image: url('../assets/images/desktop-debutante.avif') !important;
+  background-position: center center !important;
+  background-repeat: no-repeat !important;
+  background-size: cover !important;
+  padding: 0 20px 50px 20px !important; /* Sem padding no topo, exatamente 50px na parte inferior para posicionar o botão */
+  box-sizing: border-box !important;
+  overflow: hidden !important;
+}
+
+.hero-overlay {
+  display: none !important; /* Removido a máscara que deixava a hero escura */
+}
+
+.hero-container {
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: flex-end !important;
+  align-items: center !important;
+  width: 100% !important;
+  max-width: 1140px !important;
+  margin: 0 auto !important;
+  position: relative !important;
+  z-index: 2 !important;
+  padding: 0 !important; /* Zerado padding do container para posicionamento preciso */
+}
+
+.hero-cta-wrapper {
+  align-self: center !important;
+  margin: 0 !important; /* Zerado margens do wrapper para posicionamento preciso */
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  width: 100% !important;
+}
+
+.hero-cta-btn {
+  font-family: 'Bitter', 'Montserrat', sans-serif !important;
+  font-size: 16px !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  background-color: #719949 !important; /* Verde original */
+  color: #FFFFFF !important;
+  border-radius: 30px !important;
+  padding: 15px 25px !important;
+  text-decoration: none !important;
+  display: inline-block !important;
+  text-align: center !important;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2) !important;
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease !important;
+  border: none !important;
+}
+
+.hero-cta-btn:hover {
+  background-color: #5c803a !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* Responsividade da Seção Hero */
+@media (max-width: 767px) {
+  .hero-section {
+    background-image: url('../assets/images/mobile-debutante.avif') !important;
+    justify-content: flex-end !important;
+    padding: 0 20px 50px 20px !important; /* Posicionamento do botão idêntico de 50px a partir do rodapé */
+  }
+  
+  .hero-container {
+    padding: 0 !important;
+  }
+
+  .hero-cta-wrapper {
+    margin: 0 !important;
+  }
+}
+
+/* ==========================================================================
+   CLEAN-ROOM MIGRATION: SEÇÃO 2 (INTRO/SOBRE)
+   ========================================================================== */
+
+.intro-section {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  position: relative !important;
+  background-color: #C58B68 !important; /* Cor de fundo bronze original */
+  min-height: 250px !important;
+  padding: 80px 20px !important;
+  box-sizing: border-box !important;
+  overflow: hidden !important;
+}
+
+.intro-container {
+  width: 100% !important;
+  max-width: 1140px !important;
+  margin: 0 auto !important;
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  position: relative !important;
+  z-index: 2 !important;
+}
+
+.intro-content {
+  width: 46% !important; /* Alinhado ao desktop */
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 20px !important;
+}
+
+.intro-title {
+  font-family: 'Bitter', 'Montserrat', sans-serif !important;
+  font-size: 46px !important;
+  font-weight: 600 !important;
+  line-height: 1em !important;
+  color: #FFFFFF !important;
+  margin: 0 !important;
+  text-align: left !important;
+}
+
+.intro-text {
+  font-family: 'Bitter', 'Montserrat', sans-serif !important;
+  font-size: 18px !important;
+  font-weight: 400 !important;
+  line-height: 1.5em !important;
+  color: #FFFFFF !important;
+  text-align: left !important;
+}
+
+.intro-text p {
+  margin: 0 0 15px 0 !important;
+}
+
+.intro-text p:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* Right Side Full-Bleed Carousel */
+.intro-carousel-wrapper {
+  position: absolute !important;
+  top: 0 !important;
+  right: 0 !important;
+  width: 50vw !important; /* Ocupa 50% da largura da tela */
+  height: 100% !important;
+  z-index: 1 !important;
+  display: flex !important;
+  align-items: center !important;
+  overflow: hidden !important;
+  
+  /* Máscara de fade na esquerda */
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 40%) !important;
+  mask-image: linear-gradient(to right, transparent 0%, black 40%) !important;
+}
+
+.intro-swiper {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.intro-swiper .swiper-slide {
+  width: 100% !important;
+  height: 100% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.intro-swiper .swiper-slide-inner {
+  width: 100% !important;
+  height: 100% !important;
+  margin: 0 !important;
+}
+
+.intro-swiper .swiper-slide-image {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: center !important;
+}
+
+/* Responsividade da Seção Intro */
+@media (max-width: 1024px) {
+  .intro-section {
+    padding: 40px 16px !important;
+  }
+
+  .intro-content {
+    width: 50% !important;
+  }
+
+  .intro-title {
+    font-size: 35px !important;
+  }
+
+  .intro-text {
+    font-size: 16px !important;
+  }
+
+  .intro-carousel-wrapper {
+    width: 60vw !important;
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 40%) !important;
+    mask-image: linear-gradient(to right, transparent 0%, black 40%) !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .intro-section {
+    flex-direction: column !important;
+    padding: 40px 0 0 0 !important; /* Sem padding inferior para encaixar o carrossel embaixo */
+    min-height: auto !important;
+  }
+
+  .intro-container {
+    flex-direction: column !important;
+    padding: 0 10px !important;
+  }
+
+  .intro-content {
+    width: 100% !important;
+    gap: 15px !important;
+    padding-bottom: 30px !important;
+  }
+
+  .intro-title {
+    font-size: 28px !important;
+  }
+
+  .intro-text {
+    font-size: 16px !important;
+  }
+
+  .intro-carousel-wrapper {
+    position: relative !important;
+    top: auto !important;
+    right: auto !important;
+    width: 100vw !important;
+    height: 300px !important; /* Altura fixa para mobile */
+    margin-top: 20px !important;
+    
+    /* Máscara de fade no topo em mobile */
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 25%) !important;
+    mask-image: linear-gradient(to bottom, transparent 0%, black 25%) !important;
+  }
+}
+
+/* ==========================================================================
+   CLEAN-ROOM MIGRATION: SEÇÃO 3 (VÍDEO / BASTIDORES)
+   ========================================================================== */
+
+.video-section {
+  position: relative !important;
+  background-color: #FFFFFF !important;
+  padding: 50px 20px !important;
+  box-sizing: border-box !important;
+  overflow: hidden !important;
+  width: 100% !important;
+}
+
+.video-pattern {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  background-image: url('../assets/images/pattern-m-011-1.avif') !important;
+  background-repeat: repeat !important;
+  mix-blend-mode: multiply !important;
+  opacity: 0.08 !important;
+  z-index: 1 !important;
+  pointer-events: none !important;
+}
+
+.video-container {
+  width: 100% !important;
+  max-width: 1140px !important;
+  margin: 0 auto !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  position: relative !important;
+  z-index: 2 !important;
+}
+
+.video-title {
+  font-family: 'Bitter', 'Montserrat', sans-serif !important;
+  font-size: 46px !important;
+  font-weight: 600 !important;
+  line-height: 1.1em !important;
+  color: #0C2340 !important;
+  text-align: center !important;
+  margin: 0 0 20px 0 !important;
+  max-width: 70% !important;
+}
+
+.video-subtitle {
+  font-family: 'Bitter', 'Montserrat', sans-serif !important;
+  font-size: 18px !important;
+  font-weight: 400 !important;
+  line-height: 1.5em !important;
+  color: #645E5E !important;
+  text-align: center !important;
+  margin: 0 0 40px 0 !important;
+  max-width: 1109px !important;
+}
+
+.video-player-wrapper {
+  width: 100% !important;
+  max-width: 1140px !important;
+  display: block !important;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1) !important;
+  border-radius: 8px !important;
+  overflow: hidden !important;
+}
+
+/* Responsividade da Seção Vídeo */
+@media (max-width: 767px) {
+  .video-section {
+    padding: 40px 10px !important;
+  }
+
+  .video-title {
+    font-size: 28px !important;
+    max-width: 100% !important;
+  }
+
+  .video-subtitle {
+    font-size: 16px !important;
+    max-width: 100% !important;
+    margin-bottom: 25px !important;
+  }
+}
+
+/* ==========================================================================
+   CLEAN-ROOM MIGRATION: SEÇÃO 4 (ESTAMOS COM VOCÊ / FASES)
+   ========================================================================== */
+
+.steps-section {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  position: relative !important;
+  background-color: #C58B68 !important; /* Cor bronze original */
+  min-height: 250px !important;
+  padding: 80px 20px !important;
+  box-sizing: border-box !important;
+  overflow: hidden !important;
+}
+
+.steps-container {
+  width: 100% !important;
+  max-width: 1140px !important;
+  margin: 0 auto !important;
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  position: relative !important;
+  z-index: 2 !important;
+}
+
+.steps-content {
+  width: 50% !important; /* Em desktop, ocupa a metade esquerda */
+  max-width: 550px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 20px !important;
+}
+
+.steps-title {
+  font-family: 'Bitter', 'Montserrat', sans-serif !important;
+  font-size: 46px !important;
+  font-weight: 600 !important;
+  line-height: 1.1em !important;
+  color: #FFFFFF !important;
+  margin: 0 !important;
+  text-align: left !important;
+}
+
+.steps-description {
+  font-family: 'Bitter', 'Montserrat', sans-serif !important;
+  font-size: 18px !important;
+  font-weight: 400 !important;
+  line-height: 1.5em !important;
+  color: #FFFFFF !important;
+  text-align: left !important;
+  margin: 0 !important;
+}
+
+.steps-empty-column {
+  flex: 1 !important;
+}
+
+/* Responsividade da Seção Steps */
+@media (max-width: 1024px) {
+  .steps-section {
+    padding: 40px 16px !important;
+  }
+
+  .steps-content {
+    width: 60% !important;
+  }
+
+  .steps-title {
+    font-size: 35px !important;
+  }
+
+  .steps-description {
+    font-size: 16px !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .steps-section {
+    padding: 40px 10px !important;
+    min-height: auto !important;
+  }
+
+  .steps-container {
+    flex-direction: column !important;
+  }
+
+  .steps-content {
+    width: 100% !important;
+    max-width: 100% !important;
+    text-align: center !important;
+  }
+
+  .steps-title {
+    font-size: 28px !important;
+    text-align: center !important;
+  }
+
+  .steps-description {
+    font-size: 16px !important;
+    text-align: center !important;
+  }
+}
+
+/* ==========================================================================
+   CLEAN-ROOM MIGRATION: SEÇÃO 5 (TESTIMONIALS / DEPOIMENTOS)
+   ========================================================================== */
+
+.testimonials-section {
+  position: relative !important;
+  background-color: #FFFFFF !important;
+  padding: 50px 20px !important;
+  box-sizing: border-box !important;
+  overflow: hidden !important;
+  width: 100% !important;
+}
+
+.testimonials-pattern {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  background-image: url('../assets/images/pattern-m-011-1.avif') !important;
+  background-repeat: repeat !important;
+  mix-blend-mode: multiply !important;
+  opacity: 0.08 !important;
+  z-index: 1 !important;
+  pointer-events: none !important;
+}
+
+.testimonials-container {
+  width: 100% !important;
+  max-width: 1140px !important;
+  margin: 0 auto !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  position: relative !important;
+  z-index: 2 !important;
+}
+
+.testimonials-title {
+  font-family: 'Bitter', 'Montserrat', sans-serif !important;
+  font-size: 46px !important;
+  font-weight: 600 !important;
+  line-height: 1.1em !important;
+  color: #0C2340 !important;
+  text-align: center !important;
+  margin: 0 0 40px 0 !important;
+  max-width: 70% !important;
+}
+
+.testimonials-swiper-wrapper {
+  width: 100% !important;
+  max-width: 780px !important;
+  margin: 0 auto !important;
+}
+
+.testimonials-swiper {
+  width: 100% !important;
+  padding-bottom: 20px !important;
+}
+
+.testimonials-swiper .swiper-slide {
+  height: auto !important; /* Permite esticar verticalmente */
+  display: flex !important;
+}
+
+.testimonial-card {
+  background-color: #C58B68 !important; /* Bronze de fundo */
+  border-radius: 29px !important;
+  padding: 35px 45px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  align-items: center !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+  border: none !important; /* Sem bordas conforme pedido */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05) !important;
+}
+
+.testimonial-text {
+  color: #FFFFFF !important;
+  font-family: 'Fira Sans', 'Montserrat', sans-serif !important;
+  font-size: 18px !important;
+  font-weight: 300 !important;
+  line-height: 1.6em !important;
+  text-align: center !important;
+}
+
+.testimonial-author {
+  color: #FFFFFF !important;
+  font-family: 'Bitter', 'Montserrat', sans-serif !important;
+  font-size: 18px !important;
+  font-weight: 600 !important;
+  margin-top: 18px !important;
+  text-align: center !important;
+}
+
+/* Responsividade da Seção Depoimentos */
+@media (max-width: 767px) {
+  .testimonials-section {
+    padding: 40px 10px !important;
+  }
+
+  .testimonials-title {
+    font-size: 28px !important;
+    max-width: 100% !important;
+    margin-bottom: 25px !important;
+  }
+
+  .testimonial-card {
+    padding: 25px 30px !important;
+  }
+
+  .testimonial-text {
+    font-size: 16px !important;
+    line-height: 1.5em !important;
+  }
+
+  .testimonial-author {
+    font-size: 16px !important;
+    margin-top: 15px !important;
+  }
+}
+
+/* ==========================================================================
+   CLEAN-ROOM MIGRATION: SEÇÃO 6 (GALERIA HEADING / MOMENTOS)
+   ========================================================================== */
+
+.gallery-heading-section {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  position: relative !important;
+  background-color: #C58B68 !important; /* Bronze de fundo */
+  padding: 80px 20px 40px 20px !important;
+  box-sizing: border-box !important;
+  width: 100% !important;
+}
+
+.gallery-heading-container {
+  width: 100% !important;
+  max-width: 1140px !important;
+  margin: 0 auto !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+}
+
+.gallery-heading-title {
+  font-family: 'Bitter', 'Montserrat', sans-serif !important;
+  font-size: 46px !important;
+  font-weight: 600 !important;
+  line-height: 1.1em !important;
+  color: #FFFFFF !important;
+  text-align: center !important;
+  margin: 0 0 20px 0 !important;
+  max-width: 570px !important;
+}
+
+.gallery-heading-subtitle {
+  font-family: 'Bitter', 'Montserrat', sans-serif !important;
+  font-size: 18px !important;
+  font-weight: 400 !important;
+  line-height: 1.5em !important;
+  color: #FFFFFF !important;
+  text-align: center !important;
+  margin: 0 !important;
+  max-width: 690px !important;
+}
+
+/* Responsividade da Seção Galeria Heading */
+@media (max-width: 767px) {
+  .gallery-heading-section {
+    padding: 40px 10px !important;
+  }
+
+  .gallery-heading-title {
+    font-size: 28px !important;
+    max-width: 100% !important;
+  }
+
+  .gallery-heading-subtitle {
+    font-size: 16px !important;
+    max-width: 100% !important;
+  }
+}
+
+/* ==========================================================================
+   CLEAN-ROOM MIGRATION: SEÇÃO 8 (CONTATO / FORMULÁRIO)
+   ========================================================================== */
+
+.contact-section {
+  position: relative !important;
+  background-image: url('../assets/images/EHR06050-scaled.avif') !important;
+  background-position: center center !important;
+  background-repeat: no-repeat !important;
+  background-size: cover !important;
+  padding: 80px 20px !important;
+  box-sizing: border-box !important;
+  overflow: hidden !important;
+  width: 100% !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+}
+
+.contact-overlay {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  background-color: #000000 !important;
+  opacity: 0.64 !important;
+  z-index: 1 !important;
+}
+
+.contact-container {
+  display: flex !important;
+  flex-direction: row !important;
+  justify-content: space-between !important;
+  align-items: flex-start !important;
+  gap: 50px !important;
+  width: 100% !important;
+  max-width: 1140px !important;
+  margin: 0 auto !important;
+  position: relative !important;
+  z-index: 2 !important;
+}
+
+.contact-content {
+  flex: 0 0 45% !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 20px !important;
+  text-align: left !important;
+  color: #FFFFFF !important;
+}
+
+.contact-title {
+  font-family: 'Bitter', 'Montserrat', sans-serif !important;
+  font-size: 43px !important;
+  font-weight: 600 !important;
+  line-height: 1.1em !important;
+  color: #FFFFFF !important;
+  margin: 0 !important;
+}
+
+.contact-subtitle {
+  font-family: 'Bitter', 'Montserrat', sans-serif !important;
+  font-size: 18px !important;
+  font-weight: 300 !important;
+  line-height: 1.5em !important;
+  color: #FFFFFF !important;
+  margin: 0 !important;
+}
+
+.contact-form-wrapper {
+  flex: 0 0 50% !important;
+  width: 100% !important;
+}
+
+.contact-card.card-vidro {
+  background: rgba(255, 255, 255, 0.08) !important;
+  backdrop-filter: blur(5px) !important;
+  -webkit-backdrop-filter: blur(5px) !important;
+  border-radius: 40px !important;
+  border: 1px solid rgba(255, 255, 255, 0.3) !important;
+  padding: 40px !important;
+  box-sizing: border-box !important;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3) !important;
+}
+
+.contact-card.card-vidro form {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 15px !important;
+}
+
+.contact-card.card-vidro .form-group {
+  margin-bottom: 0 !important;
+}
+
+.contact-card.card-vidro input,
+.contact-card.card-vidro select,
+.contact-card.card-vidro textarea {
+  background-color: #FFFFFFCC !important;
+  border: none !important;
+  color: #393837 !important;
+  font-family: 'Raleway', sans-serif !important;
+  font-weight: 300 !important;
+  font-size: 15px !important;
+  padding: 12px 18px !important;
+  border-radius: 8px !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+  transition: all 0.3s ease !important;
+  outline: none !important;
+}
+
+.contact-card.card-vidro input:focus,
+.contact-card.card-vidro select:focus,
+.contact-card.card-vidro textarea:focus {
+  background-color: #FFFFFF !important;
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.4) !important;
+}
+
+.contact-card.card-vidro input::placeholder,
+.contact-card.card-vidro textarea::placeholder {
+  color: #6c757d !important;
+  opacity: 1 !important;
+}
+
+.contact-card.card-vidro .form-submit {
+  background-color: #393837 !important;
+  border: 1px solid #FFFFFF !important;
+  color: #FFFFFF !important;
+  font-family: 'Raleway', sans-serif !important;
+  font-weight: 600 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 1px !important;
+  font-size: 15px !important;
+  padding: 15px 30px !important;
+  border-radius: 24px !important;
+  cursor: pointer !important;
+  transition: all 0.3s ease !important;
+  margin-top: 10px !important;
+  width: 100% !important;
+  display: block !important;
+  text-align: center !important;
+  box-sizing: border-box !important;
+}
+
+.contact-card.card-vidro .form-submit:hover {
+  background-color: #4a4948 !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2) !important;
+}
+
+@media (max-width: 1024px) {
+  .contact-section {
+    padding: 60px 16px !important;
+  }
+
+  .contact-container {
+    gap: 30px !important;
+  }
+
+  .contact-content {
+    flex: 0 0 45% !important;
+  }
+
+  .contact-title {
+    font-size: 35px !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .contact-section {
+    padding: 50px 10px !important;
+  }
+
+  .contact-container {
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 35px !important;
+  }
+
+  .contact-content {
+    flex: 1 1 100% !important;
+    text-align: center !important;
+  }
+
+  .contact-title {
+    font-size: 28px !important;
+  }
+
+  .contact-form-wrapper {
+    flex: 1 1 100% !important;
+  }
+
+  .contact-card.card-vidro {
+    padding: 25px 20px !important;
+    border-radius: 25px !important;
+  }
+}
+
+/* ==========================================================================
+   CLEAN-ROOM MIGRATION: SEÇÃO 9 (FOOTER GLOBAL)
+   ========================================================================== */
+
+.footer-section {
+  background-color: #0C2340 !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.33) !important;
+  padding: 25px 20px !important;
+  box-sizing: border-box !important;
+  width: 100% !important;
+}
+
+.footer-container {
+  display: flex !important;
+  flex-direction: row !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  width: 100% !important;
+  max-width: 1140px !important;
+  margin: 0 auto !important;
+}
+
+.footer-copyright {
+  flex: 1 1 33.333% !important;
+  text-align: center !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.footer-copyright p {
+  margin: 0 !important;
+  font-family: 'Roboto', sans-serif !important;
+  font-size: 12px !important;
+  color: rgba(255, 255, 255, 0.7) !important;
+  font-weight: 300 !important;
+  line-height: 1.5 !important;
+}
+
+.footer-logo-wrapper {
+  flex: 1 1 33.333% !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+}
+
+.footer-logo {
+  max-width: 90px !important;
+  height: auto !important;
+  display: block !important;
+}
+
+.footer-credits {
+  flex: 1 1 33.333% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 8px !important;
+}
+
+.footer-credits span {
+  font-family: 'Roboto', sans-serif !important;
+  font-size: 12px !important;
+  color: rgba(255, 255, 255, 0.7) !important;
+  font-weight: 300 !important;
+}
+
+.footer-credits a {
+  display: inline-block !important;
+  text-decoration: none !important;
+  display: flex !important;
+  align-items: center !important;
+}
+
+.footer-dmove-logo {
+  max-width: 80px !important;
+  height: auto !important;
+  display: block !important;
+}
+
+@media (max-width: 767px) {
+  .footer-section {
+    padding: 20px 10px !important;
+  }
+
+  .footer-container {
+    flex-direction: column !important;
+    gap: 25px !important;
+    text-align: center !important;
+  }
+
+  .footer-copyright {
+    flex: 1 1 100% !important;
+    text-align: center !important;
+    order: 3 !important;
+  }
+
+  .footer-logo-wrapper {
+    flex: 1 1 100% !important;
+    order: 1 !important;
+  }
+
+  .footer-credits {
+    flex: 1 1 100% !important;
+    justify-content: center !important;
+    order: 2 !important;
+  }
 }

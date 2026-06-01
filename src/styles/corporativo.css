@@ -512,3 +512,987 @@ Resolve conflitos de layout e visibilidade com temas.
 .elementor-element-6be13d6 * {
   color: #0C2340 !important;
 }
+
+/* ==========================================================================
+   CLEAN-ROOM MIGRATION: SEÇÃO 1 (HERO/HEADER)
+   ========================================================================== */
+
+.hero-section {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 40px 0;
+  background-image: url('../assets/images/back-multipla2.avif');
+  background-position: top center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: relative;
+  width: 100%;
+}
+
+/* Overlay escuro de 40% opacidade para garantir leitura impecável */
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 1;
+}
+
+.hero-container {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1140px;
+  margin: 0 auto;
+  height: 100%;
+  flex-grow: 1;
+}
+
+.hero-logo-wrapper {
+  align-self: center;
+  margin-bottom: 20px;
+}
+
+.hero-logo {
+  width: 120px !important;
+  max-width: 120px !important;
+  height: auto !important;
+  display: block !important;
+  margin: 0 auto !important;
+}
+
+.hero-content {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 5px 0 !important;
+  text-align: center !important;
+  width: 100% !important;
+  max-width: 1140px !important;
+  margin: auto 0 !important;
+}
+
+.hero-title {
+  font-family: 'Bitter', serif !important;
+  font-size: 60px !important;
+  line-height: 72px !important;
+  font-weight: 600 !important;
+  text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3) !important;
+  color: #FFFFFF !important;
+  margin: 0 !important;
+  text-align: center !important;
+}
+
+.hero-subtitle {
+  font-family: 'Bitter', serif !important;
+  font-size: 22px !important;
+  line-height: 33px !important;
+  font-weight: 400 !important;
+  color: #FFFFFF !important;
+  margin: 13px 0 0 0 !important;
+  text-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3) !important;
+  text-align: center !important;
+}
+
+.hero-cta-wrapper {
+  align-self: center;
+  margin-top: 22px !important;
+}
+
+.hero-cta-btn {
+  display: inline-block;
+  background-color: #719949 !important;
+  color: #FFFFFF !important;
+  font-family: 'Bitter', serif !important;
+  font-size: 16px !important;
+  line-height: 16px !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  text-decoration: none !important;
+  border-radius: 30px !important;
+  padding: 15px 25px !important;
+  transition: background-color 0.3s ease, transform 0.2s ease !important;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.15) !important;
+}
+
+.hero-cta-btn:hover {
+  background-color: #5c7f3b !important;
+  transform: translateY(-2px) !important;
+}
+
+.hero-cta-btn:active {
+  transform: translateY(0) !important;
+}
+
+/* ==========================================================================
+   CLEAN-ROOM MIGRATION: SEÇÃO 2 (SOBRE)
+   ========================================================================== */
+
+.intro-section {
+  position: relative !important;
+  padding: 80px 0 !important;
+  background-color: #0C2340 !important; /* Azul marinho escuro premium */
+  overflow: hidden !important;
+  min-height: 250px !important;
+  width: 100% !important;
+}
+
+.intro-container {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  width: 100% !important;
+  max-width: 1140px !important;
+  margin: 0 auto !important;
+}
+
+.intro-content {
+  width: 50% !important;
+  max-width: 520px !important; /* Limite de leitura confortável */
+  z-index: 2 !important;
+  box-sizing: border-box !important;
+  padding-right: 40px !important;
+}
+
+.intro-title {
+  font-family: 'Bitter', serif !important;
+  font-size: 46px !important;
+  line-height: 52px !important;
+  font-weight: 600 !important;
+  color: #FFFFFF !important;
+  margin: 0 0 20px 0 !important;
+}
+
+.intro-desc {
+  font-family: 'Bitter', serif !important;
+  font-size: 18px !important;
+  line-height: 27px !important; /* 1.5em */
+  font-weight: 400 !important;
+  color: #FFFFFF !important;
+  margin: 0 !important;
+  opacity: 0.95 !important;
+}
+
+.intro-image-wrapper {
+  position: absolute !important;
+  right: 0 !important;
+  top: 0 !important;
+  width: 45vw !important;
+  height: 100% !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  overflow: hidden !important;
+  z-index: 1 !important;
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 40%) !important;
+  mask-image: linear-gradient(to right, transparent 0%, black 40%) !important;
+}
+
+.intro-img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: center !important;
+  display: block !important;
+}
+
+/* Responsividade Mobile para Seção 2 */
+@media (max-width: 991px) {
+  .intro-section {
+    padding: 40px 0 0 0 !important;
+    min-height: auto !important;
+  }
+  
+  .intro-container {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    padding: 0 !important;
+  }
+  
+  .intro-content {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 0 20px 40px 20px !important;
+  }
+  
+  .intro-image-wrapper {
+    position: relative !important;
+    width: 100vw !important;
+    left: 50% !important;
+    right: 50% !important;
+    margin-left: -50vw !important;
+    height: 300px !important;
+    mask-image: none !important;
+    -webkit-mask-image: none !important;
+  }
+  
+  .intro-img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+  }
+}
+
+/* ==========================================================================
+   CLEAN-ROOM MIGRATION: SEÇÃO 3 (SERVIÇOS)
+   ========================================================================== */
+
+.services-section {
+  position: relative !important;
+  padding: 80px 0 !important;
+  background-color: #F4EFEA !important; /* Fundo bege premium */
+  background-image: url('../assets/images/Background-3.avif') !important; /* Linhas sutis elegantes do original */
+  background-position: center !important;
+  background-size: cover !important;
+  background-repeat: no-repeat !important;
+  width: 100% !important;
+}
+
+.services-container {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important; /* Centralizado */
+  text-align: center !important; /* Centralizado */
+  width: 100% !important;
+  max-width: 1140px !important;
+  margin: 0 auto !important;
+}
+
+.services-title {
+  font-family: 'Bitter', serif !important;
+  font-size: 46px !important;
+  line-height: 52px !important;
+  font-weight: 600 !important;
+  color: #0C2340 !important; /* Azul marinho escuro premium */
+  margin: 0 auto 15px auto !important; /* Centralizado com margem automática lateral */
+  max-width: 1100px !important;
+  text-align: center !important;
+}
+
+.services-desc {
+  font-family: 'Bitter', serif !important;
+  font-size: 18px !important;
+  line-height: 28.8px !important;
+  font-weight: 400 !important;
+  color: #0C2340 !important;
+  margin: 0 auto 40px auto !important; /* Centralizado com margem automática lateral */
+  max-width: 750px !important;
+  text-align: center !important;
+}
+
+.services-grid {
+  display: grid !important;
+  grid-template-columns: repeat(5, 1fr) !important;
+  gap: 20px !important;
+  width: 100% !important;
+  padding: 10px 0 !important;
+}
+
+.service-card {
+  background-color: #0C2340 !important; /* Azul marinho escuro */
+  border-radius: 30px !important;
+  padding: 50px 20px 30px 20px !important; /* Mais preenchimento no topo para centrar visualmente */
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: flex-start !important; /* Mantém o alinhamento ao topo para nivelar os ícones */
+  text-align: center !important;
+  box-shadow: 0 10px 30px rgba(12, 35, 64, 0.08) !important;
+  transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+  height: 220px !important; /* Altura padrão para simetria */
+  box-sizing: border-box !important;
+}
+
+.service-card:hover {
+  transform: translateY(-5px) !important;
+  box-shadow: 0 15px 35px rgba(12, 35, 64, 0.15) !important;
+}
+
+.service-card-icon {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  color: #FFFFFF !important;
+  font-size: 45px !important; /* Tamanho do ícone ajustado */
+  line-height: 1 !important;
+  margin-bottom: 12px !important;
+  height: 50px !important;
+}
+
+.service-card-title {
+  font-family: 'Bitter', serif !important;
+  font-size: 16px !important;
+  line-height: 18px !important;
+  font-weight: 400 !important;
+  color: #FFFFFF !important;
+  margin: 0 !important;
+}
+
+/* Responsividade Mobile para Seção 3 */
+@media (max-width: 991px) {
+  .services-section {
+    padding: 60px 20px !important;
+  }
+  
+  .services-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 15px !important;
+  }
+  
+  .services-title {
+    font-size: 32px !important;
+    line-height: 36px !important;
+    max-width: 100% !important;
+  }
+  
+  .services-desc {
+    font-size: 16px !important;
+    line-height: 24px !important;
+    max-width: 100% !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .services-grid {
+    grid-template-columns: 1fr !important;
+  }
+  
+  .service-card {
+    height: auto !important;
+    padding: 25px 20px !important;
+  }
+}
+
+/* ==========================================================================
+   CLEAN-ROOM MIGRATION: SEÇÃO 4 (MOTIVAÇÃO)
+   ========================================================================== */
+
+.motivation-section {
+  position: relative !important;
+  padding: 80px 0 !important;
+  background-image: url('../assets/images/Prancheta-1.avif') !important;
+  background-position: center center !important;
+  background-size: cover !important;
+  background-attachment: fixed !important;
+  background-repeat: no-repeat !important;
+  min-height: 500px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 100% !important;
+}
+
+.motivation-container {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-align: center !important;
+  width: 100% !important;
+  max-width: 1140px !important;
+  margin: 0 auto !important;
+  padding: 0 20px !important;
+  box-sizing: border-box !important;
+  gap: 20px !important;
+  z-index: 2 !important;
+}
+
+.motivation-title {
+  font-family: 'Bitter', serif !important;
+  font-size: 60px !important;
+  line-height: 68px !important;
+  font-weight: 600 !important;
+  color: #FFFFFF !important;
+  text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.4) !important;
+  margin: 0 !important;
+  max-width: 1100px !important;
+  text-align: center !important;
+}
+
+.motivation-desc {
+  font-family: 'Bitter', serif !important;
+  font-size: 22px !important;
+  line-height: 35.2px !important;
+  font-weight: 400 !important;
+  color: #FFFFFF !important;
+  text-shadow: 0px 0px 8px rgba(0, 0, 0, 0.4) !important;
+  margin: 0 !important;
+  max-width: 850px !important;
+  text-align: center !important;
+}
+
+/* Responsividade para Seção 4 */
+@media (max-width: 991px) {
+  .motivation-section {
+    min-height: auto !important;
+    padding: 60px 20px !important;
+  }
+  
+  .motivation-title {
+    font-size: 38px !important;
+    line-height: 44px !important;
+  }
+  
+  .motivation-desc {
+    font-size: 18px !important;
+    line-height: 28px !important;
+  }
+}
+
+/* ==========================================================================
+   CLEAN-ROOM MIGRATION: SEÇÃO 5 (CASES)
+   ========================================================================== */
+
+.cases-section {
+  position: relative !important;
+  padding: 80px 0 !important;
+  background-color: #0C2340 !important; /* Azul marinho escuro premium */
+  width: 100% !important;
+}
+
+.cases-container {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  width: 100% !important;
+  max-width: 1140px !important;
+  margin: 0 auto !important;
+  padding: 0 20px !important;
+  box-sizing: border-box !important;
+  gap: 60px !important;
+}
+
+.cases-content {
+  flex: 1 !important;
+  max-width: 540px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 20px !important;
+}
+
+.cases-title {
+  font-family: 'Bitter', serif !important;
+  font-size: 46px !important;
+  line-height: 52px !important;
+  font-weight: 600 !important;
+  color: #FFFFFF !important;
+  margin: 0 !important;
+}
+
+.cases-desc {
+  font-family: 'Bitter', serif !important;
+  font-size: 18px !important;
+  line-height: 27px !important;
+  font-weight: 400 !important;
+  color: #FFFFFF !important;
+  opacity: 0.95 !important;
+  margin: 0 !important;
+}
+
+.cases-empty-col {
+  flex: 1 !important;
+  max-width: 540px !important;
+}
+
+/* Responsividade para Seção 5 */
+@media (max-width: 991px) {
+  .cases-container {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 30px !important;
+  }
+  
+  .cases-content {
+    max-width: 100% !important;
+  }
+  
+  .cases-empty-col {
+    display: none !important;
+  }
+  
+  .cases-title {
+    font-size: 32px !important;
+    line-height: 38px !important;
+  }
+}
+
+/* ==========================================================================
+   CLEAN-ROOM MIGRATION: SEÇÃO 6 (DIFERENCIAIS)
+   ========================================================================== */
+
+.differentials-section {
+  position: relative !important;
+  padding: 80px 0 !important;
+  background-color: #F4EFEA !important; /* Bege fallback */
+  background-image: url('../assets/images/background-2.avif') !important; /* Textura original */
+  background-position: center center !important;
+  background-size: cover !important;
+  background-repeat: no-repeat !important;
+  width: 100% !important;
+}
+
+.differentials-container {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  text-align: center !important;
+  width: 100% !important;
+  max-width: 1140px !important;
+  margin: 0 auto !important;
+  padding: 0 20px !important;
+  box-sizing: border-box !important;
+}
+
+.differentials-title {
+  font-family: 'Bitter', serif !important;
+  font-size: 46px !important;
+  line-height: 52px !important;
+  font-weight: 600 !important;
+  color: #0C2340 !important; /* Azul marinho escuro */
+  margin: 0 auto 40px auto !important;
+  max-width: 800px !important;
+  text-align: center !important;
+}
+
+.differentials-swiper {
+  width: 100% !important;
+  padding: 20px 40px !important; /* Espaço para setas nas laterais */
+  box-sizing: border-box !important;
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+.differential-card {
+  background-color: #0C2340 !important; /* Azul marinho escuro */
+  border-radius: 40px !important;
+  padding: 20px !important; /* Mapeado a partir de 8% de produção */
+  box-sizing: border-box !important;
+  display: block !important;
+  min-height: 320px !important;
+  height: 320px !important;
+  box-shadow: inset 0px 0px 10px rgba(255, 255, 255, 0.4) !important; /* Efeito degrade/glowing de borda interna */
+  transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+}
+
+.differential-card:hover {
+  transform: translateY(-5px) !important;
+  box-shadow: inset 0px 0px 12px rgba(255, 255, 255, 0.5), 0 15px 35px rgba(12, 35, 64, 0.2) !important;
+}
+
+.differential-card-inner {
+  border: 1px solid rgba(255, 255, 255, 0.68) !important; /* A linha em volta do comentário e botão */
+  border-radius: 30px !important;
+  padding: 25px 20px !important;
+  box-sizing: border-box !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  text-align: center !important;
+  height: 100% !important;
+  width: 100% !important;
+  box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.19) !important;
+}
+
+.differential-card-title {
+  font-family: 'Bitter', serif !important;
+  font-size: 24px !important;
+  line-height: 30px !important;
+  font-weight: 600 !important;
+  color: #FFFFFF !important;
+  margin: 0 !important;
+}
+
+.differential-card-desc {
+  font-family: 'Bitter', serif !important;
+  font-size: 14px !important;
+  line-height: 21px !important;
+  font-weight: 400 !important;
+  color: #FFFFFF !important;
+  opacity: 0.9 !important;
+  margin: 15px 0 !important;
+  flex-grow: 1 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.differential-card-btn {
+  display: inline-block !important;
+  font-family: 'Bitter', serif !important;
+  color: #FFFFFF !important;
+  font-size: 12px !important;
+  line-height: 12px !important;
+  font-weight: 600 !important;
+  text-transform: uppercase !important;
+  text-decoration: none !important;
+  background-color: rgba(255, 255, 255, 0.03) !important;
+  border: 1px solid #FFFFFF !important;
+  border-radius: 30px !important;
+  padding: 12px 24px !important;
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease !important;
+}
+
+.differential-card-btn:hover {
+  background-color: #FFFFFF !important;
+  color: #0C2340 !important;
+  border-color: #FFFFFF !important;
+}
+
+/* Setas customizadas para Swiper */
+.differentials-swiper-prev,
+.differentials-swiper-next {
+  color: #0C2340 !important; /* Azul marinho contrastante sobre o fundo bege */
+  transition: transform 0.3s ease !important;
+}
+
+.differentials-swiper-prev:hover,
+.differentials-swiper-next:hover {
+  transform: scale(1.1) !important;
+}
+
+.differentials-swiper-prev::after,
+.differentials-swiper-next::after {
+  font-size: 24px !important;
+  font-weight: 900 !important;
+}
+
+/* Efeito de deslizamento contínuo e linear do carrossel (Marquee) */
+.differentials-swiper .swiper-wrapper {
+  transition-timing-function: linear !important;
+}
+
+/* Responsividade para Seção 6 */
+@media (max-width: 991px) {
+  .differentials-section {
+    padding: 60px 20px !important;
+  }
+  
+  .differentials-title {
+    font-size: 32px !important;
+    line-height: 38px !important;
+    margin-bottom: 25px !important;
+  }
+  
+  .differentials-swiper {
+    padding: 10px 30px !important;
+  }
+  
+  .differential-card {
+    min-height: 300px !important;
+    height: 300px !important;
+    padding: 25px 20px !important;
+  }
+  
+  .differential-card-title {
+    font-size: 20px !important;
+    line-height: 26px !important;
+  }
+}
+
+/* ==========================================================================
+   CLEAN-ROOM MIGRATION: SEÇÕES EXTRAS (HIDDEN SECTIONS)
+   ========================================================================== */
+
+.hidden-section {
+  display: none !important;
+}
+
+/* ==========================================================================
+   CLEAN-ROOM MIGRATION: SEÇÃO 9 (CONTATO)
+   ========================================================================== */
+
+.contact-section {
+  position: relative !important;
+  padding: 80px 0 !important;
+  background-image: url('../assets/images/rear-view-of-audience.avif') !important;
+  background-position: center center !important;
+  background-size: cover !important;
+  background-repeat: no-repeat !important;
+  width: 100% !important;
+  min-height: 1013px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+/* Pseudo-elemento ::before para mesclar com o pattern Prancheta-6.avif de 70% opacidade */
+.contact-section::before {
+  content: "" !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  background-image: url('../assets/images/Prancheta-6.avif') !important;
+  background-position: center bottom !important;
+  background-size: cover !important;
+  background-repeat: no-repeat !important;
+  opacity: 0.7 !important;
+  z-index: 1 !important;
+}
+
+.contact-container {
+  position: relative !important;
+  z-index: 2 !important;
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: flex-start !important; /* Alinhado no topo junto com o formulário */
+  justify-content: space-between !important;
+  width: 100% !important;
+  max-width: 1140px !important;
+  margin: 0 auto !important;
+  padding: 0 20px !important;
+  box-sizing: border-box !important;
+  gap: 60px !important;
+}
+
+.contact-content {
+  flex: 1 !important;
+  max-width: 511px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 20px !important;
+  text-align: left !important;
+}
+
+.contact-title {
+  font-family: 'Bitter', serif !important;
+  font-size: 78px !important;
+  line-height: 78px !important;
+  font-weight: 600 !important;
+  color: #0C2340 !important; /* Azul marinho escuro premium */
+  margin: 0 !important;
+  text-align: left !important;
+}
+
+.contact-desc {
+  font-family: 'Bitter', serif !important;
+  font-size: 22px !important;
+  line-height: 33px !important;
+  font-weight: 400 !important;
+  color: #0C2340 !important;
+  margin: 0 !important;
+  text-align: left !important;
+}
+
+.contact-form-wrapper {
+  flex: 1 !important;
+  max-width: 568px !important; /* Mapeado para layout lateral original */
+  box-sizing: border-box !important;
+}
+
+/* Glassmorphism premium card-vidro */
+.glass-card {
+  background: rgba(255, 255, 255, 0.1) !important;
+  backdrop-filter: blur(5px) !important;
+  -webkit-backdrop-filter: blur(5px) !important;
+  border-radius: 40px !important;
+  border: 1px solid rgba(255, 255, 255, 0.3) !important;
+  padding: 60px !important;
+  box-sizing: border-box !important;
+}
+
+/* Ajustes dos inputs dentro do formulário corporativo */
+.contact-form-wrapper .form-input,
+.contact-form-wrapper .form-select,
+.contact-form-wrapper .form-textarea {
+  background: rgba(255, 255, 255, 0.8) !important;
+  border-radius: 20px !important;
+  border: 0 !important;
+  color: #000000 !important;
+  padding: 12px 18px !important;
+  font-size: 15px !important;
+}
+
+.contact-form-wrapper .form-submit {
+  background-color: #0C2340 !important; /* Azul marinho escuro */
+  color: #FFFFFF !important;
+  font-family: 'Bitter', serif !important;
+  font-weight: 700 !important;
+  border: 1px solid rgba(255, 255, 255, 0.5) !important;
+  border-radius: 30px !important;
+  padding: 15px 30px !important;
+  text-transform: uppercase !important;
+  letter-spacing: 2px !important;
+  cursor: pointer !important;
+  transition: background-color 0.3s ease, transform 0.2s ease !important;
+  box-shadow: 0px 4px 15px rgba(12, 35, 64, 0.15) !important;
+}
+
+.contact-form-wrapper .form-submit:hover {
+  background-color: #16365c !important; /* Azul marinho mais claro */
+  transform: translateY(-2px) !important;
+}
+
+/* Responsividade para Seção 9 */
+@media (max-width: 991px) {
+  .contact-section {
+    padding: 60px 20px !important;
+    min-height: auto !important;
+  }
+
+  .contact-container {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 30px !important;
+  }
+
+  .contact-content {
+    max-width: 100% !important;
+    text-align: center !important;
+  }
+
+  .contact-title {
+    font-size: 38px !important;
+    line-height: 44px !important;
+    text-align: center !important;
+  }
+
+  .contact-desc {
+    font-size: 18px !important;
+    line-height: 26px !important;
+    text-align: center !important;
+  }
+
+  .contact-form-wrapper {
+    max-width: 100% !important;
+  }
+
+  .glass-card {
+    padding: 30px 20px !important;
+  }
+}
+
+/* ==========================================================================
+   CLEAN-ROOM MIGRATION: SEÇÃO 10 (FOOTER)
+   ========================================================================== */
+
+.footer-section {
+  background-color: #0C2340 !important; /* Azul marinho escuro */
+  width: 100% !important;
+  padding: 20px 0 !important;
+}
+
+.footer-container {
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: wrap !important;
+  align-items: center !important;
+  justify-content: center !important; /* Centraliza no mobile se houver quebra */
+  width: 100% !important;
+  max-width: 1140px !important;
+  margin: 0 auto !important;
+  padding: 0 10px !important;
+  box-sizing: border-box !important;
+  gap: 20px !important;
+}
+
+.footer-copyright {
+  flex: 0 0 40% !important;
+  max-width: 456px !important;
+  padding: 10px !important;
+  box-sizing: border-box !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+}
+
+.footer-copyright p {
+  font-family: 'Roboto', 'Raleway', 'Montserrat', sans-serif !important;
+  font-size: 12px !important;
+  line-height: 18px !important;
+  font-weight: 400 !important;
+  color: #FFFFFF !important;
+  margin: 0 !important;
+}
+
+.footer-logo-wrapper {
+  flex: 0 0 15% !important;
+  max-width: 171px !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+}
+
+.footer-logo {
+  width: 90px !important;
+  max-width: 90px !important;
+  height: auto !important;
+  display: block !important;
+}
+
+.footer-credits {
+  flex: 0 0 40% !important;
+  max-width: 456px !important;
+  padding: 10px !important;
+  box-sizing: border-box !important;
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  justify-content: center !important; /* Centralizado horizontalmente dentro da coluna de 40% */
+  gap: 10px !important;
+}
+
+.footer-credits span {
+  font-family: 'Roboto', 'Raleway', 'Montserrat', sans-serif !important;
+  font-size: 12px !important;
+  line-height: 18px !important;
+  font-weight: 400 !important;
+  color: #FFFFFF !important;
+}
+
+.footer-dmove-logo {
+  width: 80px !important;
+  height: auto !important;
+  display: block !important;
+}
+
+/* Responsividade do Footer */
+@media (max-width: 767px) {
+  .footer-container {
+    gap: 10px !important;
+    padding: 20px 10px !important;
+  }
+
+  .footer-copyright {
+    flex: 0 0 100% !important;
+    max-width: 100% !important;
+    justify-content: center !important;
+    text-align: center !important;
+    padding: 0 10px !important;
+  }
+
+  .footer-copyright p {
+    text-align: center !important;
+  }
+
+  .footer-logo-wrapper {
+    flex: 0 0 19% !important;
+    max-width: 19% !important;
+    justify-content: center !important;
+  }
+
+  .footer-logo {
+    width: 100% !important;
+    max-width: 90px !important;
+  }
+
+  .footer-credits {
+    flex: 0 0 57% !important;
+    max-width: 57% !important;
+    justify-content: center !important;
+    padding: 10px 0 !important;
+  }
+}
