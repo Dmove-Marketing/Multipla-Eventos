@@ -120,7 +120,7 @@ p {
 
 @media (min-width: 768px) {
   .section-title {
-    font-size: 38px; /* Valor exato e oficial do Elementor original! */
+    font-size: 46px;
     margin-bottom: 30px;
     line-height: 1.1;
   }
@@ -206,10 +206,25 @@ p {
   .hero-section {
     background-image: url('../assets/images/mobile-multiplaaaa1-copiar.jpg.avif');
     min-height: 100vh;
-    padding-bottom: 100px;
+    padding-bottom: 55px;
   }
   .hero-container {
     margin-top: 0;
+  }
+  .hero-cta-btn {
+    font-size: 13px;
+    padding: 11px 22px;
+    letter-spacing: 0.8px;
+  }
+  .intro-content .section-title,
+  .intro-content h2,
+  .video-section .section-title,
+  .video-section h2,
+  .testimonials-section .section-title,
+  .testimonials-section h2,
+  .gallery-section .section-title,
+  .gallery-section h2 {
+    font-size: 28px;
   }
 }
 
@@ -246,7 +261,7 @@ p {
 
 .intro-content .section-title,
 .intro-content h2 {
-  font-size: 38px;
+  font-size: 46px;
   font-weight: 600;
   line-height: 1em;
   color: #FFFFFF;
@@ -344,7 +359,7 @@ p {
 
 .video-section .section-title,
 .video-section h2 {
-  font-size: 38px;
+  font-size: 46px;
   font-weight: 600;
   line-height: 1em;
   color: #645E5E;
@@ -389,7 +404,7 @@ p {
 
 .testimonials-section .section-title,
 .testimonials-section h2 {
-  font-size: 38px;
+  font-size: 46px;
   font-weight: 600;
   line-height: 1em;
   color: #FFFFFF;
@@ -658,7 +673,7 @@ p {
 
 .gallery-section .section-title,
 .gallery-section h2 {
-  font-size: 38px;
+  font-size: 46px;
   font-weight: 600;
   line-height: 1em;
   color: #FFFFFF;
@@ -785,7 +800,7 @@ p {
 .impecaveis-content .section-title,
 .impecaveis-content h2 {
   color: #645E5E !important;
-  font-size: 38px;
+  font-size: 46px;
   font-weight: 600;
   line-height: 1.1em;
   margin-bottom: 20px;
@@ -811,7 +826,7 @@ p {
   }
   .impecaveis-content .section-title,
   .impecaveis-content h2 {
-    font-size: 26px;
+    font-size: 28px;
     text-align: center;
   }
   .impecaveis-content .section-desc,
@@ -1043,7 +1058,7 @@ p {
   }
   .contact-text-col .section-title,
   .contact-text-col h2 {
-    font-size: 26px;
+    font-size: 28px;
     text-align: center;
   }
   .contact-text-col .section-desc,
