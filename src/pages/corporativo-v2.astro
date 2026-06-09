@@ -1,0 +1,345 @@
+---
+import Base from '../layouts/Base.astro';
+import config from '../../config.json';
+import Img from '../components/ui/Img.astro';
+import LeadForm from '../components/forms/LeadForm.astro';
+import Video from '../components/ui/Video.astro';
+import '../styles/corporativo-v2.css';
+---
+
+<Base
+  title="Eventos Corporativos - Múltipla Eventos"
+  description="Menos pesquisa, mais resultado. A Múltipla organiza seu evento corporativo do início ao fim — confraternizações, lançamentos, workshops e muito mais."
+  canonical="https://eventos.multiplaeventos.com.br/corporativo-v2/"
+>
+  <Fragment slot="head">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Bitter:wght@300;400;500;600;700&family=Raleway:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  </Fragment>
+
+  <div class="cv2">
+
+    <!-- NAV -->
+    <nav>
+      <a href="/" class="nav-logo">
+        <Img src="Multipla-principal_2400px.avif" alt="Múltipla Eventos" class="nav-logo-img" width={480} />
+      </a>
+      <a href="#contato" class="nav-cta">Quero conhecer a Múltipla</a>
+    </nav>
+
+    <!-- HERO -->
+    <section id="hero">
+      <div class="hero-bg">
+        <Img src="hero-cv2.jpg" alt="Evento corporativo Múltipla Eventos" class="hero-img" priority />
+      </div>
+      <div class="hero-bg-overlay" style="position:absolute;inset:0;z-index:1;background:linear-gradient(to top,rgba(12,35,64,0.85) 0%,rgba(12,35,64,0.35) 55%,rgba(12,35,64,0.15) 100%);"></div>
+
+      <div class="hero-content">
+        <span class="hero-tag">Eventos Corporativos</span>
+        <h1 class="hero-h1">Encontre o espaço <em>ideal</em> para<br>seu próximo evento corporativo<br>com a Múltipla.</h1>
+        <p class="hero-p">Menos pesquisa, mais resultado. Nós organizamos seu evento do início ao fim.</p>
+        <a href="#contato" class="btn-gold">Quero conhecer a Múltipla</a>
+      </div>
+
+    </section>
+
+    <!-- STATS -->
+    <section class="stats-bar">
+      <div class="stats-inner">
+        <div class="hstat">
+          <strong>+25</strong>
+          <span>anos de experiência</span>
+        </div>
+        <div class="hstat">
+          <strong>+5.000</strong>
+          <span>eventos realizados</span>
+        </div>
+        <div class="hstat">
+          <strong>FSP</strong>
+          <span>premiada pela Folha de SP</span>
+        </div>
+        <div class="hstat">
+          <strong>100%</strong>
+          <span>produção integrada</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- SOBRE -->
+    <section id="sobre" class="sec">
+      <div class="sec-inner">
+        <div>
+          <span class="label">Nossa proposta</span>
+          <h2 class="sec-h2">Do briefing à entrega.<br>Nós cuidamos do caminho.</h2>
+          <p class="sec-p">A maioria das equipes de RH, Marketing e Compras perde semanas pesquisando espaços, negociando condições e ajustando orçamento. A Múltipla entra nesse fluxo e assume as etapas mais complexas.</p>
+          <p class="sec-p" style="margin-top:1rem;">Indicamos o local mais adequado dentro da nossa curadoria, conectamos parceiros alinhados ao padrão desejado e coordenamos toda a produção. O seu time foca na estratégia. Nós cuidamos da operação.</p>
+        </div>
+        <div class="sobre-video">
+          <Video
+            src="/videos/multipla-25anos.mp4"
+            title="Múltipla Eventos – 25 anos"
+            description="Vídeo institucional Múltipla Eventos 25 anos de história organizando eventos corporativos de alto padrão."
+            uploadDate="2026-06-09"
+            duration="PT3M"
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- TIPOS DE EVENTOS -->
+    <section id="tipos" class="sec">
+      <div class="sec-inner">
+        <span class="label">Tipos de eventos</span>
+        <h2 class="sec-h2">Múltiplas possibilidades para você</h2>
+        <div class="tipos-grid">
+
+          <div class="tipo-card">
+            <div class="tipo-img-slot">
+              <Img src="tipo-confraternizacao.jpg" alt="Confraternizações corporativas" />
+            </div>
+            <div class="tipo-body">
+              <span class="tipo-num">01</span>
+              <h3>Confraternizações</h3>
+              <p>Encontros de final de ano, celebrações de metas e reuniões de equipe com curadoria completa.</p>
+            </div>
+          </div>
+
+          <div class="tipo-card">
+            <div class="tipo-img-slot">
+              <Img src="tipo-lancamento.jpg" alt="Lançamentos de produto" style="object-position: center 30%;" />
+            </div>
+            <div class="tipo-body">
+              <span class="tipo-num">02</span>
+              <h3>Lançamentos de produto</h3>
+              <p>Indicação de cenografia especializada e gestão integral da experiência.</p>
+            </div>
+          </div>
+
+          <div class="tipo-card">
+            <div class="tipo-img-slot">
+              <Img src="tipo-workshop.jpg" alt="Workshops e treinamentos" />
+            </div>
+            <div class="tipo-body">
+              <span class="tipo-num">03</span>
+              <h3>Workshops e treinamentos</h3>
+              <p>Suporte técnico e coordenação de transmissão para encontros de conteúdo e formação.</p>
+            </div>
+          </div>
+
+          <div class="tipo-card">
+            <div class="tipo-img-slot">
+              <Img src="tipo-coffee-break.jpg" alt="Jantares e coffee breaks" />
+            </div>
+            <div class="tipo-body">
+              <span class="tipo-num">04</span>
+              <h3>Jantares e coffee breaks</h3>
+              <p>Seleção gastronômica e logística para pausas e momentos de networking.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- COMO FUNCIONA -->
+    <section id="servicos" class="sec">
+      <div class="sec-inner">
+        <span class="label">Como funciona</span>
+        <h2 class="sec-h2">Você traz a visão. Nós construímos a jornada até ela.</h2>
+        <p class="sec-p" style="margin-bottom:2rem;">Nada é deixado ao acaso. Cada fase é estruturada para garantir segurança, fluidez e um resultado excepcional.</p>
+
+        <div class="steps">
+          <div class="step">
+            <div class="step-n">1</div>
+            <div>
+              <h4>Briefing</h4>
+              <p>Entendimento profundo dos objetivos da empresa para a ocasião.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-n">2</div>
+            <div>
+              <h4>Planejamento</h4>
+              <p>Estratégia personalizada com cronograma detalhado e definição orçamentária.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-n">3</div>
+            <div>
+              <h4>Organização</h4>
+              <p>Acompanhamento contínuo para garantir coerência em todas as decisões.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-n">4</div>
+            <div>
+              <h4>Negociação</h4>
+              <p>Articulação com parceiros alinhados ao padrão desejado.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-n">5</div>
+            <div>
+              <h4>Logística</h4>
+              <p>Coordenação de todos os aspectos operacionais, da recepção à infraestrutura do dia.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-n">6</div>
+            <div>
+              <h4>Execução do dia</h4>
+              <p>Supervisão integral para assegurar que tudo aconteça conforme o planejado.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- POR QUÊ A MÚLTIPLA -->
+    <section id="porque" class="sec">
+      <div class="sec-inner">
+        <span class="label">Por que a Múltipla?</span>
+        <h2 class="sec-h2">Resolvemos tudo o que o seu time não tem tempo de fazer.</h2>
+        <p class="sec-p">A organização interna de encontros consome tempo de equipes que têm outras prioridades. Nós resolvemos isso com competência e sem complicação.</p>
+
+        <div class="porque-grid">
+          <div class="porque-card">
+            <p class="porque-num">01</p>
+            <h3>Equipe especializada</h3>
+            <p>Colaboradores experientes, com o perfil selecionado de acordo com cada ocasião.</p>
+          </div>
+          <div class="porque-card">
+            <p class="porque-num">02</p>
+            <h3>Credibilidade</h3>
+            <p>Mais de 25 anos garantindo consistência, confiança e alto nível de entrega.</p>
+          </div>
+          <div class="porque-card">
+            <p class="porque-num">03</p>
+            <h3>Rede de fornecedores</h3>
+            <p>Parcerias reconhecidas pelo padrão elevado de execução.</p>
+          </div>
+          <div class="porque-card">
+            <p class="porque-num">04</p>
+            <h3>Gestão de riscos</h3>
+            <p>Antecipação de cenários e soluções rápidas, com total controle sobre cada etapa.</p>
+          </div>
+          <div class="porque-card span-2">
+            <p class="porque-num">05</p>
+            <h3>Comunicação clara</h3>
+            <p>Garantia de que todas as expectativas sejam atendidas de forma clara e alinhada.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- GALERIA -->
+    <section id="galeria" class="sec">
+      <div class="sec-inner">
+        <span class="label">Galeria</span>
+        <h2 class="sec-h2">Equipes que confiaram na Múltipla</h2>
+        <p class="sec-p">Registros reais de eventos corporativos de sucesso, conduzidos com precisão.</p>
+
+        <div class="gallery-grid">
+          <div class="img-slot"><Img src="galeria-cv2-1.jpg" alt="Galeria Múltipla Eventos 1" /></div>
+          <div class="img-slot"><Img src="galeria-cv2-2.jpg" alt="Galeria Múltipla Eventos 2" /></div>
+          <div class="img-slot"><Img src="galeria-cv2-3.jpg" alt="Galeria Múltipla Eventos 3" /></div>
+          <div class="img-slot"><Img src="galeria-cv2-4.jpg" alt="Galeria Múltipla Eventos 4" /></div>
+          <div class="img-slot"><Img src="galeria-cv2-5.jpg" alt="Galeria Múltipla Eventos 5" /></div>
+          <div class="img-slot"><Img src="galeria-cv2-6.jpg" alt="Galeria Múltipla Eventos 6" /></div>
+          <div class="img-slot"><Img src="galeria-cv2-7.jpg" alt="Galeria Múltipla Eventos 7" /></div>
+          <div class="img-slot"><Img src="galeria-cv2-8.jpg" alt="Galeria Múltipla Eventos 8" /></div>
+          <div class="img-slot"><Img src="galeria-cv2-9.jpg" alt="Galeria Múltipla Eventos 9" /></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTATO -->
+    <section id="contato" class="sec">
+      <div class="contato-bg">
+        <Img src="contato-cv2.jpg" alt="Evento corporativo Múltipla Eventos" class="contato-img" />
+      </div>
+      <div class="contato-overlay"></div>
+
+      <div class="sec-inner">
+        <span class="label">Fale com a Múltipla</span>
+        <h2 class="sec-h2">Conte o seu evento.<br>Nós resolvemos o resto.</h2>
+        <p class="form-intro">Preencha o formulário para receber nosso contato.</p>
+
+        <div class="card-form">
+          <LeadForm
+            formId="lead-form-cv2"
+            formName="form_corporativo_v2"
+            project={config.project_slug}
+            submitUrl={config.forms['lead-form'].webhooks[0]}
+            redirectUrl={config.forms['lead-form'].redirect_on_success}
+            submitText="Solicitar orçamento"
+            prefix="cv2"
+            honeypot
+            successTitle="Solicitação recebida"
+            successText="Recebemos seu pedido.<br>Em breve entraremos em contato pelo WhatsApp ou e-mail."
+            fields={[
+              { name: 'form_fields[objetivo]', payloadKey: 'Objetivo', type: 'select', label: 'Objetivo de contato', required: true, options: [
+                { value: '', label: 'Selecione', disabled: true, selected: true },
+                { value: 'Solicitar orçamento', label: 'Solicitar orçamento' },
+                { value: 'Fornecedor', label: 'Fornecedor' },
+                { value: 'Profissional buscando vaga', label: 'Profissional buscando vaga' },
+              ] },
+              { name: 'form_fields[nome]', payloadKey: 'Nome', type: 'text', label: 'Nome completo', placeholder: 'Seu nome', required: true },
+              { name: 'form_fields[telefone]', payloadKey: 'WhatsApp', type: 'text', label: 'WhatsApp', placeholder: '(00) 00000-0000', required: true },
+              { name: 'form_fields[email]', payloadKey: 'E-mail', type: 'email', label: 'E-mail', placeholder: 'seu@email.com', required: true },
+              { name: 'form_fields[tipo]', payloadKey: 'Tipo de evento', type: 'select', label: 'Tipo de evento', required: true, options: [
+                { value: '', label: 'Selecione', disabled: true, selected: true },
+                { value: 'Confraternização', label: 'Confraternização' },
+                { value: 'Lançamento de produto', label: 'Lançamento de produto' },
+                { value: 'Workshop / Treinamento', label: 'Workshop / Treinamento' },
+                { value: 'Jantar / Coffee break', label: 'Jantar / Coffee break' },
+                { value: 'Outros', label: 'Outros' },
+              ] },
+              { type: 'row', fields: [
+                { name: 'form_fields[data]', payloadKey: 'Data do evento', type: 'text', label: 'Data do evento', placeholder: 'dd/mm/aaaa' },
+                { name: 'form_fields[local]', payloadKey: 'Local do evento', type: 'text', label: 'Local do evento', placeholder: 'Cidade ou espaço' },
+              ] },
+              { name: 'form_fields[pessoas]', payloadKey: 'Quantidade de pessoas', type: 'number', label: 'Quantidade de pessoas', placeholder: 'Ex: 100', min: '1' },
+              { name: 'form_fields[mensagem]', payloadKey: 'Mensagem', type: 'textarea', label: 'Informações adicionais', placeholder: 'Descreva seu evento, expectativas, dúvidas...', required: false },
+            ]}
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+      <div class="footer-logo">
+        <Img src="Multipla-principal_2400px.avif" alt="Múltipla Eventos" class="footer-logo-img" width={480} />
+      </div>
+      <small>Copyright © 2026 Múltipla Eventos — Todos os direitos reservados</small>
+      <div class="footer-credits">
+        <span>Desenvolvido por:</span>
+        <a href="https://dmove.com.br" target="_blank" rel="noopener noreferrer">
+          <Img src="logo-dmove-1.avif" alt="DMove" width={2551} height={574} class="footer-dmove" />
+        </a>
+      </div>
+    </footer>
+
+  </div>
+</Base>
+
+<script>
+  // Máscara de telefone
+  function applyPhoneMask(value: string) {
+    value = value.replace(/\D/g, '');
+    if (value.length > 11) value = value.slice(0, 11);
+    if (value.length > 10) return `(${value.slice(0,2)}) ${value.slice(2,7)}-${value.slice(7)}`;
+    if (value.length > 6)  return `(${value.slice(0,2)}) ${value.slice(2,6)}-${value.slice(6)}`;
+    if (value.length > 2)  return `(${value.slice(0,2)}) ${value.slice(2)}`;
+    return value;
+  }
+
+  const telInput = document.querySelector('input[name="form_fields[telefone]"]') as HTMLInputElement | null;
+  if (telInput) {
+    telInput.addEventListener('input', (e) => {
+      (e.target as HTMLInputElement).value = applyPhoneMask((e.target as HTMLInputElement).value);
+    });
+  }
+</script>

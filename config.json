@@ -2,7 +2,7 @@
   "project_name": "Múltipla Eventos",
   "project_slug": "multipla-eventos",
   "client": "Múltipla Eventos",
-  "environment": "development",
+  "environment": "production",
   "tracking": {
     "gtm_id": "GTM-5PZHNJ7K",
     "enabled": true

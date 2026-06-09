@@ -11,6 +11,9 @@ dist/
 *.log
 npm-debug.log*
 
+# Vídeos (arquivos grandes — enviar direto ao VPS)
+public/videos/
+
 # OS e Editores / IA
 .DS_Store
 .vscode/

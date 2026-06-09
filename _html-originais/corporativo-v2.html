@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Múltipla Eventos – Eventos Corporativos</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --gold: #C4A46B;
+  --gold-light: #D9BC8A;
+  --dark: #18140F;
+  --dark2: #221D15;
+  --warm-white: #F9F5EE;
+  --off-white: #F2ECE1;
+  --text: #2A2218;
+  --muted: #8A7B69;
+  --border: rgba(196,164,107,0.22);
+  --max: 1100px;
+}
+
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--warm-white);
+  color: var(--text);
+  overflow-x: hidden;
+}
+
+/* ─── NAV ─── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 1rem 5vw;
+  background: rgba(24,20,15,0.88);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(196,164,107,0.18);
+}
+.nav-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.45rem; font-weight: 600;
+  color: var(--gold-light); letter-spacing: 0.07em;
+  text-decoration: none;
+}
+.nav-cta {
+  font-size: 0.73rem; font-weight: 500;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--gold-light);
+  border: 1px solid rgba(196,164,107,0.5);
+  padding: 0.55rem 1.4rem; text-decoration: none;
+  transition: background .25s, color .25s;
+}
+.nav-cta:hover { background: var(--gold); color: var(--dark); }
+
+/* ─── HERO ─── */
+#hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex; flex-direction: column;
+  align-items: flex-start; justify-content: flex-end;
+  padding: 0 6vw 5rem;
+  background: var(--dark);
+  overflow: hidden;
+}
+.hero-bg {
+  position: absolute; inset: 0;
+  background: linear-gradient(160deg, #2A2218 0%, #18140F 100%);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--muted); font-size: 0.7rem;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  flex-direction: column; gap: 0.75rem;
+}
+.hero-bg-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(24,20,15,0.92) 0%, rgba(24,20,15,0.3) 60%, rgba(24,20,15,0.2) 100%);
+}
+.hero-content { position: relative; z-index: 2; max-width: 720px; }
+.hero-tag {
+  display: inline-block;
+  font-size: 0.68rem; letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--gold); border-top: 1px solid var(--gold);
+  padding-top: 0.5rem; margin-bottom: 1.6rem;
+}
+.hero-h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2.8rem, 5.5vw, 5rem);
+  font-weight: 300; line-height: 1.1;
+  color: var(--warm-white);
+  margin-bottom: 1.2rem;
+}
+.hero-h1 em { font-style: italic; color: var(--gold-light); }
+.hero-p {
+  font-size: 1.05rem; line-height: 1.65;
+  color: rgba(249,245,238,0.7);
+  max-width: 46ch; margin-bottom: 2.5rem;
+}
+.btn-gold {
+  display: inline-block;
+  background: var(--gold); color: var(--dark);
+  font-size: 0.75rem; font-weight: 500;
+  letter-spacing: 0.16em; text-transform: uppercase;
+  padding: 1rem 2.4rem; text-decoration: none;
+  transition: background .25s, transform .2s;
+}
+.btn-gold:hover { background: var(--gold-light); transform: translateY(-2px); }
+
+/* hero stats bar */
+.hero-stats {
+  position: relative; z-index: 2;
+  width: 100%; max-width: var(--max);
+  display: flex; gap: 0;
+  border-top: 1px solid var(--border);
+  margin-top: 3rem;
+}
+.hstat {
+  flex: 1; padding: 1.4rem 0;
+  border-right: 1px solid var(--border);
+}
+.hstat:last-child { border-right: none; }
+.hstat strong {
+  display: block;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.8rem; font-weight: 600;
+  color: var(--gold-light); line-height: 1;
+  margin-bottom: 0.25rem;
+}
+.hstat span {
+  font-size: 0.68rem; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--muted);
+}
+
+/* ─── SEÇÃO PADRÃO ─── */
+.sec {
+  width: 100%; padding: 6rem 6vw;
+}
+.sec-inner {
+  max-width: var(--max); margin: 0 auto;
+}
+.label {
+  display: block; margin-bottom: 1.5rem;
+  font-size: 0.65rem; letter-spacing: 0.24em; text-transform: uppercase;
+  color: var(--gold); border-left: 2px solid var(--gold);
+  padding-left: 0.75rem;
+}
+.sec-h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2rem, 3.5vw, 3rem);
+  font-weight: 300; line-height: 1.2;
+  margin-bottom: 1.25rem;
+}
+.sec-p {
+  font-size: 1rem; line-height: 1.8;
+  color: var(--muted); max-width: 58ch;
+}
+
+/* ─── SEÇÃO SOBRE (2 col) ─── */
+#sobre { background: var(--off-white); }
+#sobre .sec-inner {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 5rem; align-items: center;
+}
+#sobre .sec-p { margin-bottom: 1.1rem; }
+.img-slot {
+  background: var(--dark2);
+  border: 1px solid var(--border);
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  gap: 0.75rem;
+  color: var(--muted); font-size: 0.65rem;
+  letter-spacing: 0.12em; text-transform: uppercase;
+}
+.img-slot svg { opacity: 0.35; }
+.img-slot.tall { height: 520px; }
+.img-slot.short { height: 320px; }
+
+/* ─── TIPOS ─── */
+#tipos { background: var(--dark); }
+#tipos .label { color: var(--gold); border-color: var(--gold); }
+#tipos .sec-h2 { color: var(--warm-white); }
+.tipos-grid {
+  display: grid; grid-template-columns: repeat(2,1fr);
+  gap: 1px; margin-top: 3rem;
+  background: rgba(196,164,107,0.15);
+}
+.tipo-card {
+  background: var(--dark2);
+  padding: 0;
+  transition: background .3s;
+  overflow: hidden;
+}
+.tipo-card:hover { background: #2A2218; }
+.tipo-img-slot {
+  height: 200px; background: #221D15;
+  border-bottom: 1px solid rgba(196,164,107,0.1);
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  gap: 0.5rem; color: var(--muted);
+  font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase;
+}
+.tipo-img-slot svg { opacity: 0.3; }
+.tipo-body { padding: 1.75rem 2rem 2rem; }
+.tipo-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.68rem; letter-spacing: 0.22em;
+  text-transform: uppercase; color: var(--gold);
+  display: block; margin-bottom: 0.5rem;
+}
+.tipo-card h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.55rem; font-weight: 400;
+  color: var(--gold-light); margin-bottom: 0.6rem;
+}
+.tipo-card p {
+  font-size: 0.88rem; line-height: 1.7;
+  color: var(--muted);
+}
+
+/* ─── COMO FUNCIONA ─── */
+#servicos { background: var(--off-white); }
+#servicos .sec-inner { max-width: 680px; }
+.steps { margin-top: 0; }
+.step {
+  display: flex; gap: 1.5rem;
+  padding: 1.25rem 0;
+  border-bottom: 1px solid var(--border);
+}
+.step:first-child { border-top: 1px solid var(--border); }
+.step-n {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.2rem; font-weight: 300;
+  color: var(--gold); line-height: 1;
+  min-width: 2rem; flex-shrink: 0;
+}
+.step h4 {
+  font-size: 0.8rem; font-weight: 500;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--text); margin-bottom: 0.3rem;
+}
+.step p { font-size: 0.88rem; line-height: 1.65; color: var(--muted); }
+
+/* ─── GALERIA ─── */
+#galeria { background: var(--warm-white); }
+#galeria .sec-h2 { max-width: 30ch; }
+#galeria .sec-p { margin-bottom: 2.5rem; }
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
+}
+.gallery-grid .img-slot {
+  aspect-ratio: 1 / 1;
+  border: 1px solid var(--border);
+}
+
+/* ─── CONTATO ─── */
+#contato {
+  position: relative;
+  overflow: hidden;
+}
+#contato .contato-bg {
+  position: absolute; inset: 0;
+  background: linear-gradient(160deg, #2A2218 0%, #18140F 100%);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--muted); font-size: 0.65rem;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  flex-direction: column; gap: 0.75rem;
+}
+#contato .contato-bg svg { opacity: 0.3; }
+#contato .contato-overlay {
+  position: absolute; inset: 0;
+  background: rgba(24,20,15,0.82);
+}
+#contato .sec-inner {
+  position: relative; z-index: 2;
+  max-width: 600px; margin: 0 auto;
+  text-align: center;
+}
+#contato .label { color: var(--gold); border-color: var(--gold); display: inline-block; text-align: left; }
+#contato .sec-h2 { color: var(--warm-white); margin-bottom: 0.75rem; }
+.form-intro { font-size: 0.95rem; line-height: 1.7; color: rgba(249,245,238,0.6); margin-bottom: 2rem; }
+
+.card-form {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(196,164,107,0.18);
+  backdrop-filter: blur(8px);
+  padding: 2.5rem;
+}
+.f-group { margin-bottom: 1.4rem; }
+.f-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin-bottom: 1.4rem; }
+.f-group label, .f-row label {
+  display: block;
+  font-size: 0.62rem; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 0.45rem;
+}
+.f-group input, .f-group select, .f-group textarea,
+.f-row input, .f-row select {
+  width: 100%; background: transparent;
+  border: none; border-bottom: 1px solid rgba(196,164,107,0.25);
+  padding: 0.65rem 0;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.9rem; color: var(--warm-white);
+  outline: none; transition: border-color .2s;
+  -webkit-appearance: none; appearance: none;
+}
+.f-group input::placeholder, .f-group textarea::placeholder,
+.f-row input::placeholder { color: rgba(249,245,238,0.3); font-size: 0.85rem; }
+.f-group input:focus, .f-group select:focus, .f-group textarea:focus,
+.f-row input:focus, .f-row select:focus { border-color: var(--gold); }
+.f-group select option, .f-row select option { color: var(--dark); background: var(--warm-white); }
+.f-group textarea { min-height: 90px; resize: vertical; }
+.select-wrap { position: relative; }
+.select-wrap::after {
+  content: '▾'; position: absolute; right: 0; top: 50%;
+  transform: translateY(-50%); color: var(--gold);
+  pointer-events: none; font-size: 0.8rem;
+}
+
+.btn-submit {
+  width: 100%; background: var(--gold); color: var(--dark);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.75rem; font-weight: 500;
+  letter-spacing: 0.16em; text-transform: uppercase;
+  padding: 1.1rem; border: none; cursor: pointer;
+  margin-top: 0.75rem;
+  transition: background .25s, transform .2s;
+}
+.btn-submit:hover { background: var(--gold-light); transform: translateY(-1px); }
+
+
+
+/* ─── FOOTER ─── */
+footer {
+  background: var(--dark);
+  border-top: 1px solid rgba(196,164,107,0.12);
+  padding: 2rem 6vw;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.footer-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.3rem; font-weight: 600;
+  color: var(--gold-light); letter-spacing: 0.07em;
+}
+footer small { font-size: 0.7rem; color: var(--muted); }
+
+/* ─── SVG placeholder icon ─── */
+.ph-icon { width: 28px; height: 28px; display: block; }
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 860px) {
+  #sobre .sec-inner { grid-template-columns: 1fr; gap: 3rem; }
+  .tipos-grid { grid-template-columns: 1fr; }
+  .hero-stats { flex-direction: column; }
+  .hstat { border-right: none; border-bottom: 1px solid var(--border); }
+  .gallery-grid { grid-template-columns: repeat(2,1fr); }
+  footer { flex-direction: column; gap: 0.75rem; text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">Múltipla</a>
+  <a href="#contato" class="nav-cta">Quero conhecer a Múltipla</a>
+</nav>
+
+<!-- ══ HERO ══ -->
+<section id="hero">
+  <div class="hero-bg">
+    <svg class="ph-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+    Espaço para foto de fundo
+    <div class="hero-bg-overlay"></div>
+  </div>
+  <div class="hero-bg-overlay" style="position:absolute;inset:0;z-index:1;background:linear-gradient(to top,rgba(24,20,15,0.92) 0%,rgba(24,20,15,0.35) 55%,rgba(24,20,15,0.15) 100%);"></div>
+
+  <div class="hero-content">
+    <span class="hero-tag">Eventos Corporativos</span>
+    <h1 class="hero-h1">Encontre o espaço <em>ideal</em> para<br>seu próximo evento corporativo<br>com a Múltipla.</h1>
+    <p class="hero-p">Menos pesquisa, mais resultado. Nós organizamos seu evento do início ao fim.</p>
+    <a href="#contato" class="btn-gold">Quero conhecer a Múltipla</a>
+  </div>
+
+  <div class="hero-stats">
+    <div class="hstat">
+      <strong>+25</strong>
+      <span>anos de experiência</span>
+    </div>
+    <div class="hstat">
+      <strong>+5.000</strong>
+      <span>eventos realizados</span>
+    </div>
+    <div class="hstat">
+      <strong>FSP</strong>
+      <span>premiada pela Folha de SP</span>
+    </div>
+    <div class="hstat">
+      <strong>100%</strong>
+      <span>produção integrada</span>
+    </div>
+  </div>
+</section>
+
+<!-- ══ SOBRE ══ -->
+<section id="sobre" class="sec">
+  <div class="sec-inner">
+    <div>
+      <span class="label">Nossa proposta</span>
+      <h2 class="sec-h2">Do briefing à entrega.<br>Nós cuidamos do caminho.</h2>
+      <p class="sec-p">A maioria das equipes de RH, Marketing e Compras perde semanas pesquisando espaços, negociando condições e ajustando orçamento. A Múltipla entra nesse fluxo e assume as etapas mais complexas.</p>
+      <p class="sec-p" style="margin-top:1rem;">Indicamos o local mais adequado dentro da nossa curadoria, conectamos parceiros alinhados ao padrão desejado e coordenamos toda a produção. O seu time foca na estratégia. Nós cuidamos da operação.</p>
+    </div>
+    <div class="img-slot tall">
+      <svg class="ph-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+      Espaço para foto
+    </div>
+  </div>
+</section>
+
+<!-- ══ TIPOS DE EVENTOS ══ -->
+<section id="tipos" class="sec">
+  <div class="sec-inner">
+    <span class="label">Tipos de eventos</span>
+    <h2 class="sec-h2">Múltiplas possibilidades para você</h2>
+    <div class="tipos-grid">
+
+      <div class="tipo-card">
+        <div class="tipo-img-slot">
+          <svg class="ph-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+          Espaço para foto
+        </div>
+        <div class="tipo-body">
+          <span class="tipo-num">01</span>
+          <h3>Confraternizações</h3>
+          <p>Encontros de final de ano, celebrações de metas e reuniões de equipe com curadoria completa.</p>
+        </div>
+      </div>
+
+      <div class="tipo-card">
+        <div class="tipo-img-slot">
+          <svg class="ph-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+          Espaço para foto
+        </div>
+        <div class="tipo-body">
+          <span class="tipo-num">02</span>
+          <h3>Lançamentos de produto</h3>
+          <p>Indicação de cenografia especializada e gestão integral da experiência.</p>
+        </div>
+      </div>
+
+      <div class="tipo-card">
+        <div class="tipo-img-slot">
+          <svg class="ph-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+          Espaço para foto
+        </div>
+        <div class="tipo-body">
+          <span class="tipo-num">03</span>
+          <h3>Workshops e treinamentos</h3>
+          <p>Suporte técnico e coordenação de transmissão para encontros de conteúdo e formação.</p>
+        </div>
+      </div>
+
+      <div class="tipo-card">
+        <div class="tipo-img-slot">
+          <svg class="ph-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+          Espaço para foto
+        </div>
+        <div class="tipo-body">
+          <span class="tipo-num">04</span>
+          <h3>Jantares e coffee breaks</h3>
+          <p>Seleção gastronômica e logística para pausas e momentos de networking.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══ COMO FUNCIONA ══ -->
+<section id="servicos" class="sec">
+  <div class="sec-inner">
+    <div>
+      <span class="label">Como funciona</span>
+      <h2 class="sec-h2">Você traz a visão. Nós construímos a jornada até ela.</h2>
+      <p class="sec-p" style="margin-bottom:2rem;">Nada é deixado ao acaso. Cada fase é estruturada para garantir segurança, fluidez e um resultado excepcional.</p>
+
+      <div class="steps">
+        <div class="step">
+          <div class="step-n">1</div>
+          <div>
+            <h4>Briefing</h4>
+            <p>Entendimento profundo dos objetivos da empresa para a ocasião.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-n">2</div>
+          <div>
+            <h4>Planejamento</h4>
+            <p>Estratégia personalizada com cronograma detalhado e definição orçamentária.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-n">3</div>
+          <div>
+            <h4>Organização</h4>
+            <p>Acompanhamento contínuo para garantir coerência em todas as decisões.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-n">4</div>
+          <div>
+            <h4>Negociação</h4>
+            <p>Articulação com parceiros alinhados ao padrão desejado.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-n">5</div>
+          <div>
+            <h4>Logística</h4>
+            <p>Coordenação de todos os aspectos operacionais, da recepção à infraestrutura do dia.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-n">6</div>
+          <div>
+            <h4>Execução do dia</h4>
+            <p>Supervisão integral para assegurar que tudo aconteça conforme o planejado.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ POR QUÊ A MÚLTIPLA ══ -->
+<section id="porque" class="sec" style="background:var(--dark);">
+  <div class="sec-inner">
+    <span class="label" style="color:var(--gold);border-color:var(--gold);">Por que a Múltipla?</span>
+    <h2 class="sec-h2" style="color:var(--warm-white);max-width:34ch;">Resolvemos tudo o que o seu time não tem tempo de fazer.</h2>
+    <p class="sec-p" style="color:rgba(249,245,238,0.6);margin-bottom:3rem;">A organização interna de encontros consome tempo de equipes que têm outras prioridades. Nós resolvemos isso com competência e sem complicação.</p>
+
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(196,164,107,0.12);">
+      <div style="background:var(--dark2);padding:2rem 1.75rem;">
+        <p style="font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:0.6rem;">01</p>
+        <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:400;color:var(--warm-white);margin-bottom:0.5rem;">Equipe especializada</h3>
+        <p style="font-size:0.85rem;line-height:1.7;color:var(--muted);">Colaboradores experientes, com o perfil selecionado de acordo com cada ocasião.</p>
+      </div>
+      <div style="background:var(--dark2);padding:2rem 1.75rem;">
+        <p style="font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:0.6rem;">02</p>
+        <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:400;color:var(--warm-white);margin-bottom:0.5rem;">Credibilidade</h3>
+        <p style="font-size:0.85rem;line-height:1.7;color:var(--muted);">Mais de 25 anos garantindo consistência, confiança e alto nível de entrega.</p>
+      </div>
+      <div style="background:var(--dark2);padding:2rem 1.75rem;">
+        <p style="font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:0.6rem;">03</p>
+        <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:400;color:var(--warm-white);margin-bottom:0.5rem;">Rede de fornecedores</h3>
+        <p style="font-size:0.85rem;line-height:1.7;color:var(--muted);">Parcerias reconhecidas pelo padrão elevado de execução.</p>
+      </div>
+      <div style="background:var(--dark2);padding:2rem 1.75rem;">
+        <p style="font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:0.6rem;">04</p>
+        <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:400;color:var(--warm-white);margin-bottom:0.5rem;">Gestão de riscos</h3>
+        <p style="font-size:0.85rem;line-height:1.7;color:var(--muted);">Antecipação de cenários e soluções rápidas, com total controle sobre cada etapa.</p>
+      </div>
+      <div style="background:var(--dark2);padding:2rem 1.75rem;grid-column:span 2;">
+        <p style="font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:0.6rem;">05</p>
+        <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:400;color:var(--warm-white);margin-bottom:0.5rem;">Comunicação clara</h3>
+        <p style="font-size:0.85rem;line-height:1.7;color:var(--muted);">Garantia de que todas as expectativas sejam atendidas de forma clara e alinhada.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ GALERIA ══ -->
+<section id="galeria" class="sec" style="background:var(--off-white);">
+  <div class="sec-inner">
+    <span class="label">Galeria</span>
+    <h2 class="sec-h2">Equipes que confiaram na Múltipla</h2>
+    <p class="sec-p" style="margin-bottom:2.5rem;">Registros reais de eventos corporativos de sucesso, conduzidos com precisão.</p>
+
+    <div class="gallery-grid">
+      <div class="img-slot"><svg class="ph-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>Foto 1</div>
+      <div class="img-slot"><svg class="ph-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>Foto 2</div>
+      <div class="img-slot"><svg class="ph-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>Foto 3</div>
+      <div class="img-slot"><svg class="ph-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>Foto 4</div>
+      <div class="img-slot"><svg class="ph-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>Foto 5</div>
+      <div class="img-slot"><svg class="ph-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>Foto 6</div>
+      <div class="img-slot"><svg class="ph-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>Foto 7</div>
+      <div class="img-slot"><svg class="ph-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>Foto 8</div>
+      <div class="img-slot"><svg class="ph-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>Foto 9</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CONTATO ══ -->
+<section id="contato" class="sec">
+  <div class="contato-bg">
+    <svg class="ph-icon" style="width:40px;height:40px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+    Espaço para foto de fundo
+  </div>
+  <div class="contato-overlay"></div>
+
+  <div class="sec-inner">
+    <span class="label">Fale com a Múltipla</span>
+    <h2 class="sec-h2">Conte o seu evento.<br>Nós resolvemos o resto.</h2>
+    <p class="form-intro">Preencha o formulário para receber nosso contato.</p>
+
+    <div class="card-form">
+      <div class="f-group">
+        <div class="select-wrap">
+          <label for="fs-objetivo">Objetivo de contato</label>
+          <select id="fs-objetivo" name="objetivo">
+            <option value="">Objetivo de contato</option>
+            <option value="orcamento">Solicitar orçamento</option>
+            <option value="fornecedor">Fornecedor</option>
+            <option value="vaga">Profissional buscando vaga</option>
+          </select>
+        </div>
+      </div>
+      <div class="f-group">
+        <label for="fs-nome">Nome completo</label>
+        <input type="text" id="fs-nome" placeholder="Seu nome" />
+      </div>
+      <div class="f-group">
+        <label for="fs-tel">WhatsApp</label>
+        <input type="tel" id="fs-tel" placeholder="(00) 00000-0000" />
+      </div>
+      <div class="f-group">
+        <label for="fs-email">E-mail</label>
+        <input type="email" id="fs-email" placeholder="seu@email.com" />
+      </div>
+      <div class="f-group">
+        <div class="select-wrap">
+          <label for="fs-tipo">Tipo de evento</label>
+          <select id="fs-tipo" name="tipo">
+            <option value="">Tipo de evento</option>
+            <option value="confraternizacao">Confraternização</option>
+            <option value="lancamento">Lançamento de produto</option>
+            <option value="workshop">Workshop / Treinamento</option>
+            <option value="jantar">Jantar / Coffee break</option>
+            <option value="outros">Outros</option>
+          </select>
+        </div>
+      </div>
+      <div class="f-row">
+        <div>
+          <label for="fs-data">Data do evento</label>
+          <input type="text" id="fs-data" placeholder="dd/mm/aaaa" />
+        </div>
+        <div>
+          <label for="fs-local">Local do evento</label>
+          <input type="text" id="fs-local" placeholder="Cidade ou espaço" />
+        </div>
+      </div>
+      <div class="f-group">
+        <label for="fs-pessoas">Quantidade de pessoas</label>
+        <input type="number" id="fs-pessoas" placeholder="Ex: 100" min="1" />
+      </div>
+      <div class="f-group">
+        <label for="fs-msg">Informações adicionais</label>
+        <textarea id="fs-msg" placeholder="Descreva seu evento, expectativas, dúvidas..."></textarea>
+      </div>
+      <button type="submit" class="btn-submit">Solicitar orçamento</button>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<footer>
+  <div class="footer-logo">Múltipla</div>
+  <small>Copyright © 2026 Múltipla Eventos — Todos os direitos reservados</small>
+</footer>
+
+<script></script>
+</body>
+</html>
