@@ -261,16 +261,25 @@ const projectSlug = config.project_slug || 'multipla-casamentos';
       const data = {};
       formData.forEach((v, k) => { data[k] = v.toString(); });
 
-      // Formata propriedades capitalizadas para o Webhook do n8n
-      const capitalized = {};
+      // Mapeia campos para nomenclatura Elementor
+      const fieldMap = {
+        tipo: 'Tipo de evento',
+        data: 'Data do evento',
+        local_evento: 'Local do evento',
+        convidados: 'Convidados',
+        nome: 'Nome',
+        email: 'E-mail',
+        telefone: 'WhatsApp',
+      };
+      const mapped = {};
       Object.entries(data).forEach(([key, val]) => {
-        const capKey = key.charAt(0).toUpperCase() + key.slice(1);
-        capitalized[capKey] = val;
+        const mappedKey = fieldMap[key] || (key.charAt(0).toUpperCase() + key.slice(1));
+        mapped[mappedKey] = val;
       });
 
       const trackingRaw = sessionStorage.getItem('dmove_tracking');
       const tracking = trackingRaw ? JSON.parse(trackingRaw) : {};
-      
+
       const trackingParamKeys = [
         'utm_source', 'utm_medium', 'utm_campaign', 'utm_term',
         'utm_content', 'utm_id', 'gclid', 'gbraid', 'wbraid',
@@ -282,13 +291,14 @@ const projectSlug = config.project_slug || 'multipla-casamentos';
 
       const now = new Date();
       const payload = {
-        ...capitalized,
+        ...mapped,
         Fonte: fonte,
-        Data: now.toLocaleDateString('pt-BR'),
-        'Horário': now.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' }),
-        'URL da página': window.location.href,
-        'Agente de usuário': navigator.userAgent,
-        'Desenvolvido por': 'Dmove',
+        Date: now.toLocaleDateString('pt-BR'),
+        Time: now.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' }),
+        'Page URL': window.location.href,
+        'User Agent': navigator.userAgent,
+        'Remote IP': '',
+        'Powered by': 'Dmove',
         form_id: 'form_casamentos_whatsapp',
         form_name: 'form_casamentos_whatsapp'
       };
@@ -311,7 +321,7 @@ const projectSlug = config.project_slug || 'multipla-casamentos';
           event: 'form_submit',
           form_id: 'form_casamentos_whatsapp',
           project: projectSlug,
-          ...capitalized
+          ...mapped
         });
       }
 
