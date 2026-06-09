@@ -624,10 +624,10 @@ p {
   background-image: url('../assets/images/destination-scaled.avif');
 }
 .style-praia {
-  background-image: url('../assets/images/praia.avif');
+  background-image: url('/images/praia.avif');
 }
 .style-igreja {
-  background-image: url('../assets/images/igreja-scaled.avif');
+  background-image: url('/images/igreja-scaled.avif');
 }
 .style-city {
   background-image: url('../assets/images/salao.avif');
