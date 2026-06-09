@@ -216,16 +216,6 @@ p {
     padding: 11px 22px;
     letter-spacing: 0.8px;
   }
-  .intro-content .section-title,
-  .intro-content h2,
-  .video-section .section-title,
-  .video-section h2,
-  .testimonials-section .section-title,
-  .testimonials-section h2,
-  .gallery-section .section-title,
-  .gallery-section h2 {
-    font-size: 28px;
-  }
 }
 
 /* 4. Intro Section */
@@ -1366,5 +1356,18 @@ p {
   .lightbox-close {
     top: 15px;
     right: 15px;
+  }
+}
+
+@media (max-width: 767px) {
+  .intro-content .section-title,
+  .intro-content h2,
+  .video-section .section-title,
+  .video-section h2,
+  .testimonials-section .section-title,
+  .testimonials-section h2,
+  .gallery-section .section-title,
+  .gallery-section h2 {
+    font-size: 28px;
   }
 }
