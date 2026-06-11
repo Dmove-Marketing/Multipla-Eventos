@@ -36,7 +36,7 @@
   align-items: center;
 }
 .cv2 .nav-logo-img {
-  height: 38px;
+  height: 70px;
   width: auto;
   display: block;
 }
@@ -240,9 +240,21 @@
 
 /* vídeo na seção sobre */
 .cv2 .sobre-video {
-  border-radius: 12px;
-  overflow: hidden;
-  height: 520px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.cv2 .sobre-fotos {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+.cv2 .sobre-foto {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 8px;
+  display: block;
 }
 
 /* ─── TIPOS ─── */
@@ -308,7 +320,14 @@
 
 /* ─── COMO FUNCIONA ─── */
 .cv2 #servicos { background: var(--off-white); }
-.cv2 #servicos .sec-inner { max-width: 680px; }
+.cv2 #servicos .sec-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: start;
+}
+.cv2 .servicos-intro { display: flex; flex-direction: column; gap: 0; }
+.cv2 .steps { display: flex; flex-direction: column; }
 .cv2 .step {
   display: flex;
   gap: 1.5rem;
@@ -580,13 +599,14 @@
 @media (max-width: 860px) {
   .cv2 #sobre .sec-inner { grid-template-columns: 1fr; gap: 3rem; }
   .cv2 .tipos-grid { grid-template-columns: 1fr; gap: 1rem; }
-  .cv2 .sobre-video { height: auto; margin-bottom: 0; }
+  .cv2 .sobre-foto { height: 160px; }
   .cv2 .stats-inner { flex-wrap: wrap; }
   .cv2 .hstat { flex: 1 1 50%; border-right: none; border-bottom: 1px solid rgba(255,255,255,0.12); padding: 1.5rem 1.5rem; }
   .cv2 .gallery-grid { grid-template-columns: repeat(2, 1fr); }
   .cv2 footer { flex-direction: column; gap: 0.75rem; text-align: center; }
   .cv2 .porque-grid { grid-template-columns: 1fr; }
   .cv2 .porque-card.span-2 { grid-column: span 1; }
+  .cv2 #servicos .sec-inner { grid-template-columns: 1fr; gap: 2rem; }
   .cv2-form-row { grid-template-columns: 1fr; }
 
   .cv2 .hero-h1 { font-size: 28px; }
@@ -598,6 +618,7 @@
 @media (max-width: 480px) {
   .cv2 .hero-h1 { font-size: 22px; }
   .cv2 .sec-h2 { font-size: 1.45rem; }
+  .cv2 #porque .sec-h2 { font-size: 1.3rem; }
   .cv2 .hero-img { object-position: 70% center; }
   .cv2 nav { padding: 0.85rem 5vw; }
   .cv2 .nav-cta { font-size: 0.65rem; padding: 0.5rem 1rem; }

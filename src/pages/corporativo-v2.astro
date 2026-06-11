@@ -16,6 +16,9 @@ import '../styles/corporativo-v2.css';
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Bitter:wght@300;400;500;600;700&family=Raleway:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://npmcdn.com/flatpickr/dist/flatpickr.min.css" />
+    <script is:inline src="https://npmcdn.com/flatpickr/dist/flatpickr.min.js"></script>
+    <script is:inline src="https://npmcdn.com/flatpickr/dist/l10n/pt.js"></script>
   </Fragment>
 
   <div class="cv2">
@@ -25,7 +28,6 @@ import '../styles/corporativo-v2.css';
       <a href="/" class="nav-logo">
         <Img src="Multipla-principal_2400px.avif" alt="Múltipla Eventos" class="nav-logo-img" width={480} />
       </a>
-      <a href="#contato" class="nav-cta">Quero conhecer a Múltipla</a>
     </nav>
 
     <!-- HERO -->
@@ -83,6 +85,10 @@ import '../styles/corporativo-v2.css';
             uploadDate="2026-06-09"
             duration="PT3M"
           />
+          <div class="sobre-fotos">
+            <Img src="sobre-cv2-1.jpg" alt="Evento corporativo Múltipla Eventos" class="sobre-foto" />
+            <Img src="sobre-cv2-2.jpg" alt="Evento corporativo Múltipla Eventos" class="sobre-foto" />
+          </div>
         </div>
       </div>
     </section>
@@ -145,9 +151,11 @@ import '../styles/corporativo-v2.css';
     <!-- COMO FUNCIONA -->
     <section id="servicos" class="sec">
       <div class="sec-inner">
-        <span class="label">Como funciona</span>
-        <h2 class="sec-h2">Você traz a visão. Nós construímos a jornada até ela.</h2>
-        <p class="sec-p" style="margin-bottom:2rem;">Nada é deixado ao acaso. Cada fase é estruturada para garantir segurança, fluidez e um resultado excepcional.</p>
+        <div class="servicos-intro">
+          <span class="label">Como funciona</span>
+          <h2 class="sec-h2">Você traz a visão. Nós construímos a jornada até ela.</h2>
+          <p class="sec-p">Nada é deixado ao acaso. Cada fase é estruturada para garantir segurança, fluidez e um resultado excepcional.</p>
+        </div>
 
         <div class="steps">
           <div class="step">
@@ -197,10 +205,11 @@ import '../styles/corporativo-v2.css';
     </section>
 
     <!-- POR QUÊ A MÚLTIPLA -->
+
     <section id="porque" class="sec">
       <div class="sec-inner">
         <span class="label">Por que a Múltipla?</span>
-        <h2 class="sec-h2">Resolvemos tudo o que o seu time não tem tempo de fazer.</h2>
+        <h2 class="sec-h2">Resolvemos tudo o que seu time<br /> não tem tempo de fazer.</h2>
         <p class="sec-p">A organização interna de encontros consome tempo de equipes que têm outras prioridades. Nós resolvemos isso com competência e sem complicação.</p>
 
         <div class="porque-grid">
@@ -238,7 +247,7 @@ import '../styles/corporativo-v2.css';
       <div class="sec-inner">
         <span class="label">Galeria</span>
         <h2 class="sec-h2">Equipes que confiaram na Múltipla</h2>
-        <p class="sec-p">Registros reais de eventos corporativos de sucesso, conduzidos com precisão.</p>
+        <p class="sec-p">Registros reais de eventos corporativos de sucesso,<br>conduzidos com precisão.</p>
 
         <div class="gallery-grid">
           <div class="img-slot"><Img src="galeria-cv2-1.jpg" alt="Galeria Múltipla Eventos 1" /></div>
@@ -279,29 +288,35 @@ import '../styles/corporativo-v2.css';
             successTitle="Solicitação recebida"
             successText="Recebemos seu pedido.<br>Em breve entraremos em contato pelo WhatsApp ou e-mail."
             fields={[
-              { name: 'form_fields[objetivo]', payloadKey: 'Objetivo', type: 'select', label: 'Objetivo de contato', required: true, options: [
+              { name: 'form_fields[objetivo]', payloadKey: 'Serviço', type: 'select', label: 'Objetivo de contato', required: true, options: [
                 { value: '', label: 'Selecione', disabled: true, selected: true },
-                { value: 'Solicitar orçamento', label: 'Solicitar orçamento' },
+                { value: 'Solicitar Orçamento', label: 'Solicitar Orçamento' },
                 { value: 'Fornecedor', label: 'Fornecedor' },
                 { value: 'Profissional buscando vaga', label: 'Profissional buscando vaga' },
               ] },
-              { name: 'form_fields[nome]', payloadKey: 'Nome', type: 'text', label: 'Nome completo', placeholder: 'Seu nome', required: true },
-              { name: 'form_fields[telefone]', payloadKey: 'WhatsApp', type: 'text', label: 'WhatsApp', placeholder: '(00) 00000-0000', required: true },
-              { name: 'form_fields[email]', payloadKey: 'E-mail', type: 'email', label: 'E-mail', placeholder: 'seu@email.com', required: true },
+              { name: 'form_fields[nome]', payloadKey: 'Nome', type: 'text', label: 'Nome completo', placeholder: 'Nome completo', required: true },
+              { name: 'form_fields[empresa]', payloadKey: 'Empresa', type: 'text', label: 'Empresa', placeholder: 'Empresa', required: true },
+              { name: 'form_fields[telefone]', payloadKey: 'WhatsApp', type: 'text', label: 'WhatsApp', placeholder: 'WhatsApp', required: true },
+              { name: 'form_fields[email]', payloadKey: 'E-mail', type: 'email', label: 'E-mail', placeholder: 'E-mail', required: true },
               { name: 'form_fields[tipo]', payloadKey: 'Tipo de evento', type: 'select', label: 'Tipo de evento', required: true, options: [
                 { value: '', label: 'Selecione', disabled: true, selected: true },
-                { value: 'Confraternização', label: 'Confraternização' },
-                { value: 'Lançamento de produto', label: 'Lançamento de produto' },
-                { value: 'Workshop / Treinamento', label: 'Workshop / Treinamento' },
-                { value: 'Jantar / Coffee break', label: 'Jantar / Coffee break' },
+                { value: 'Confraternização corporativa', label: 'Confraternização corporativa' },
+                { value: 'Corporativo', label: 'Corporativo' },
+                { value: 'Feiras e Exposições', label: 'Feiras e Exposições' },
+                { value: 'Masterclass e Palestras', label: 'Masterclass e Palestras' },
+                { value: 'Mentorias e Treinamentos', label: 'Mentorias e Treinamentos' },
+                { value: 'Offsite corporativo', label: 'Offsite corporativo' },
+                { value: 'Reuniões de Networking', label: 'Reuniões de Networking' },
+                { value: 'Shows e Festivais', label: 'Shows e Festivais' },
+                { value: 'Workshops, Conferências e Seminários', label: 'Workshops, Conferências e Seminários' },
                 { value: 'Outros', label: 'Outros' },
               ] },
               { type: 'row', fields: [
-                { name: 'form_fields[data]', payloadKey: 'Data do evento', type: 'text', label: 'Data do evento', placeholder: 'dd/mm/aaaa' },
-                { name: 'form_fields[local]', payloadKey: 'Local do evento', type: 'text', label: 'Local do evento', placeholder: 'Cidade ou espaço' },
+                { name: 'form_fields[data]', payloadKey: 'Data do evento', type: 'text', label: 'Data do evento', placeholder: 'Data do evento', required: true },
+                { name: 'form_fields[local_evento]', payloadKey: 'Local do evento', type: 'text', label: 'Local do evento', placeholder: 'Local do evento', required: true },
               ] },
-              { name: 'form_fields[pessoas]', payloadKey: 'Quantidade de pessoas', type: 'number', label: 'Quantidade de pessoas', placeholder: 'Ex: 100', min: '1' },
-              { name: 'form_fields[mensagem]', payloadKey: 'Mensagem', type: 'textarea', label: 'Informações adicionais', placeholder: 'Descreva seu evento, expectativas, dúvidas...', required: false },
+              { name: 'form_fields[convidados]', payloadKey: 'Convidados', type: 'number', label: 'Quantidade de pessoas', placeholder: 'Quantidade de pessoas', min: '1', required: true },
+              { name: 'form_fields[mensagem]', payloadKey: 'Mensagem', type: 'textarea', label: 'Informações adicionais', placeholder: 'Informações adicionais (não obrigatório)', required: false },
             ]}
           />
         </div>
@@ -324,6 +339,20 @@ import '../styles/corporativo-v2.css';
 
   </div>
 </Base>
+
+<script>
+  // Flatpickr no campo de data
+  document.addEventListener('DOMContentLoaded', () => {
+    const dataInput = document.querySelector('input[name="form_fields[data]"]') as HTMLInputElement | null;
+    if (dataInput && !(dataInput as any)._flatpickr && (window as any).flatpickr) {
+      (window as any).flatpickr(dataInput, {
+        disableMobile: true,
+        dateFormat: 'd/m/Y',
+        locale: 'pt',
+      });
+    }
+  });
+</script>
 
 <script>
   // Máscara de telefone
