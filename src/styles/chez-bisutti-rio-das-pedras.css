@@ -11,8 +11,8 @@
     --text-light:#ECE6DA;
     --text-muted:#B9BFC2;
 
-    --display:"Cormorant Garamond", Georgia, serif;
-    --body:"Jost", system-ui, sans-serif;
+    --display:'Bitter', Georgia, serif;
+    --body:'Montserrat', system-ui, sans-serif;
 
     --maxw:1180px;
   }
@@ -101,7 +101,7 @@
   .hero .eyebrow{color:var(--gold-soft);margin-bottom:1.6rem;}
   .hero h1{
     font-family:var(--display);
-    font-weight:300;
+    font-weight:600;
     font-size:clamp(2.5rem,6vw,4.6rem);
     line-height:1.08;
     letter-spacing:.01em;
@@ -137,7 +137,7 @@
   .video .eyebrow{color:var(--gold-soft);}
   .video h2{
     font-family:var(--display);
-    font-weight:300;
+    font-weight:500;
     font-size:clamp(2rem,4.4vw,3.1rem);
     line-height:1.15;
     margin-top:1rem;
@@ -184,7 +184,7 @@
   .contact__aside .eyebrow{color:var(--gold);margin-bottom:1.4rem;}
   .contact__aside h2{
     font-family:var(--display);
-    font-weight:300;
+    font-weight:500;
     font-size:clamp(2rem,3.4vw,2.7rem);
     line-height:1.16;
     color:var(--navy);
@@ -223,7 +223,7 @@
   }
   .form__success.show{display:block;}
   .form__success .divider{margin:1.2rem auto;}
-  .form__success h3{font-family:var(--display);font-weight:400;font-size:1.9rem;color:var(--navy);}
+  .form__success h3{font-family:var(--display);font-weight:500;font-size:1.9rem;color:var(--navy);}
   .form__success p{color:var(--slate);margin-top:.6rem;}
 
   /* ================= FOOTER ================= */
