@@ -1,0 +1,123 @@
+---
+// Gerado a partir de: lake-paradise.html
+import Base from '../layouts/Base.astro';
+import config from '../../config.json';
+import '../styles/chez-bisutti-lake-paradise.css';
+---
+
+<Base
+  title="Casamento no Chez Bisutti Lake Paradise | Assessoria Múltipla"
+  description="Sonha em se casar no Chez Bisutti Lake Paradise? Há 25 anos a Múltipla transforma esse cenário no seu casamento perfeito. Receba uma consultoria personalizada."
+  ogImage="/images/og-lake-paradise.jpg"
+>
+<!-- ================= HERO ================= -->
+  <header class="hero">
+    <div class="hero__bg" aria-hidden="true"></div>
+    <div class="hero__inner reveal">
+      <p class="eyebrow">Assessoria de Casamentos</p>
+      <h1>Noiva, você sonha <br>em se casar no <br><span class="place">Chez Bisutti Lake Paradise</span>?</h1>
+      <div class="divider"><span class="line"></span><span class="dot"></span><span class="line"></span></div>
+      <p>Com 25 anos de experiência, a Múltipla transforma esse cenário no seu casamento perfeito.</p>
+      <a href="#contato" class="btn">Veja o que a gente pode criar pra você</a>
+    </div>
+  </header>
+
+  <!-- ================= VIDEO ================= -->
+  <section class="video">
+    <div class="video__head reveal">
+      <h2>Aperte o play e <br>se permita sonhar.</h2>
+      <p>Assim pode ser o seu grande dia no Chez Bisutti Lake Paradise.</p>
+    </div>
+    <div class="video__frame reveal">
+      <video
+        controls
+        preload="metadata"
+        playsinline
+        title="Casamento no Chez Bisutti Lake Paradise — Múltipla">
+        <source src="/video/lake-paradise.mp4" type="video/mp4">
+        Seu navegador não suporta a reprodução de vídeo.
+      </video>
+    </div>
+  </section>
+
+  <!-- ================= CONTACT ================= -->
+  <section class="contact" id="contato">
+    <div class="contact__grid reveal">
+      <aside class="contact__aside">
+        <p class="eyebrow">A sua vez</p>
+        <h2>Chegou a sua vez de viver seu sonho com a Múltipla.</h2>
+        <p>Preencha o formulário e receba uma consultoria personalizada para o seu casamento.</p>
+        <div class="years">25 anos realizando histórias</div>
+      </aside>
+
+      <div class="form">
+        <div id="formFields">
+          <div class="field">
+            <label for="nome">Nome</label>
+            <input type="text" id="nome" name="nome" placeholder="Seu nome completo" required>
+          </div>
+
+          <div class="field row">
+            <div class="field">
+              <label for="telefone">Telefone</label>
+              <input type="tel" id="telefone" name="telefone" placeholder="(13) 90000-0000" required>
+            </div>
+            <div class="field">
+              <label for="email">E-mail</label>
+              <input type="email" id="email" name="email" placeholder="seuemail@email.com" required>
+            </div>
+          </div>
+
+          <div class="field row">
+            <div class="field">
+              <label for="data">Data do evento</label>
+              <input type="date" id="data" name="data">
+            </div>
+            <div class="field">
+              <label for="pessoas">Número de pessoas</label>
+              <input type="number" id="pessoas" name="pessoas" min="1" placeholder="Ex: 150">
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="tipo">Tipo de evento</label>
+            <select id="tipo" name="tipo">
+              <option value="casamento">Casamento</option>
+              <option value="bodas">Bodas</option>
+              <option value="renovacao">Renovação de votos</option>
+              <option value="outro">Outro</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="detalhes">Detalhes adicionais</label>
+            <textarea id="detalhes" name="detalhes" placeholder="Conte como você imagina esse dia..."></textarea>
+          </div>
+
+          <button type="button" class="btn" id="submitBtn">Enviar solicitação</button>
+          <p class="form__note">Retornamos o seu contato em até 24 horas.</p>
+        </div>
+
+        <div class="form__success" id="formSuccess">
+          <div class="divider"><span class="line"></span><span class="dot"></span><span class="line"></span></div>
+          <h3>Solicitação enviada!</h3>
+          <p>Em breve a Múltipla entra em contato para começar a planejar o seu grande dia.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FOOTER ================= -->
+  <footer>
+    <div class="footer__logo">
+      <img src="/images/multipla-logo.avif" alt="Múltipla Eventos" class="footer__logo-img">
+    </div>
+    <div class="footer__tag">Assessoria de Casamentos</div>
+    <div class="footer__copy">Copyright © 2026 Múltipla Eventos — Todos os direitos reservados.</div>
+  </footer>
+
+
+</Base>
+<script>
+  import '../scripts/chez-bisutti-lake-paradise.js';
+</script>
