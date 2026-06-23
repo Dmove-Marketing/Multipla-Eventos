@@ -101,6 +101,18 @@
     .hero__bg {
       background-position: center, right bottom;
     }
+    .hero {
+      justify-content: flex-start;
+      text-align: left;
+      padding-left: clamp(3rem, 8vw, 9rem);
+    }
+    .hero p {
+      margin-left: 0;
+      margin-right: 0;
+    }
+    .hero .divider {
+      justify-content: flex-start;
+    }
   }
 
   .hero__inner{position:relative;max-width:760px;}
